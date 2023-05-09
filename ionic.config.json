@@ -1,0 +1,7 @@
+{
+  "name": "tikla-is-gelsin-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
