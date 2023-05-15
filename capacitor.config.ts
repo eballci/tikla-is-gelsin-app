@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'tikla-is-gelsin-app',
+  appId: 'com.tiklaisgelsin',
+  appName: 'Tıkla İş Gelsin',
   webDir: 'dist',
   server: {
     androidScheme: 'https'
