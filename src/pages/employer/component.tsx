@@ -1,18 +1,18 @@
 import {
-    IonCard, IonCardContent,
+    IonCard,
+    IonCardContent,
     IonCardHeader,
-    IonCardSubtitle, IonCardTitle,
+    IonCardSubtitle,
+    IonCardTitle,
     IonContent,
     IonHeader,
     IonPage,
     IonTitle,
     IonToolbar
-} from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Tab1.css';
+} from "@ionic/react";
 import React from "react";
 
-const Tab1: React.FC = () => {
+export default function Employer() {
     return (
         <IonPage>
             <IonHeader>
@@ -32,11 +32,10 @@ const Tab1: React.FC = () => {
                         <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
                     </IonCardHeader>
 
-                    <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
+                    <IonCardContent>Here's a small text description for the card content. Nothing more, nothing
+                        less.</IonCardContent>
                 </IonCard>
             </IonContent>
         </IonPage>
     );
-};
-
-export default Tab1;
+}
