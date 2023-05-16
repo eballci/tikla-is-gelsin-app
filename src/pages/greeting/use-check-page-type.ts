@@ -1,7 +1,4 @@
-import {
-    PageType,
-    retrievePageType
-} from "./service";
+import {PageType, retrievePageType} from "../../root/service";
 import {useEffect} from "react";
 import {useHistory} from "react-router-dom";
 

@@ -11,8 +11,12 @@ import {
     IonToolbar
 } from "@ionic/react";
 import React from "react";
+import {PageType, savePageType} from "../../root/service";
 
 export default function Employer() {
+
+    savePageType(PageType.EMPLOYER);
+
     return (
         <IonPage>
             <IonHeader>
