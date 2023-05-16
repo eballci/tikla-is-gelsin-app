@@ -19,6 +19,9 @@ const Root = () => (
                 <Route path="/greeting" component={Greeting} exact/>
                 <Route path="/seeker" component={Seeker}/>
                 <Route path="/employer" component={Employer}/>
+                <Route>
+                    <Redirect to="/"/>
+                </Route>
             </Switch>
         </IonReactRouter>
     </IonApp>

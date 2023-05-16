@@ -37,6 +37,9 @@ export default function Seeker() {
                     <Route path="/seeker/offers" exact component={Offers}/>
                     <Route path="/seeker/submissions" exact component={Submissions}/>
                     <Route path="/seeker/profile" exact component={Profile}/>
+                    <Route>
+                        <Redirect to="/seeker/feed"/>
+                    </Route>
                 </IonRouterOutlet>
                 <IonTabBar slot="bottom">
                     <IonTabButton tab="feed" href="/seeker/feed">
