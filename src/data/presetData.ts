@@ -135,8 +135,8 @@ export const positionTitles: Array<{ visual: string, value: string }> = [
         value:"RPA developer"
     },
     {
-        visual:"İOS Geliştiricisi",
-        value:"İOS developer"
+        visual:"IOS Geliştiricisi",
+        value:"ios developer"
     },
     {
         visual: "Veri Tabanı Uzmanı",
@@ -148,7 +148,7 @@ export const positionTitles: Array<{ visual: string, value: string }> = [
     },
     {
         visual: "JavaScript Geliştiricisi",
-        value: "javaScript developer"
+        value: "javascript developer"
     },
     {
         visual:"Web Tasarımı ve Kodlama",
