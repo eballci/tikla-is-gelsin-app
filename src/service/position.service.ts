@@ -90,3 +90,45 @@ export const getPosition = async (id: number): Promise<Position> => {
         throw new Error("The requested position couldn't found");
     }
 }
+
+export const updatePosition = async (position: Position): Promise<boolean> => {
+    try {
+        const request: any = {
+            positionId: position.id,
+            title: position.title,
+            description: position.description,
+            criteriaList: [
+                ...position.educationCriteriaList.map(criteria => ({
+                    type: "education",
+                    data: {
+                        study: criteria.study,
+                        minEducationLevel: criteria.minEducationLevel
+                    }
+                })),
+                ...position.experienceCriteriaList.map(criteria => ({
+                    type: "experience",
+                    data: {
+                        title: criteria.title,
+                        minimumYears: criteria.minimumYears
+                    }
+                })),
+                ...position.languageCriteriaList.map(criteria => ({
+                    type: "language",
+                    data: {
+                        expectedLanguage: criteria.expectedLanguage,
+                        expectedLevel: criteria.expectedLevel
+                    }
+                })),
+            ]
+        };
+
+        await axios.patch(
+            "http://localhost:8080/position/",
+            request
+        );
+
+        return true;
+    } catch (exception) {
+        return false;
+    }
+}
