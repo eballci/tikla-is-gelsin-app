@@ -11,7 +11,7 @@ export type EducationCriteria = {
 }
 
 export type ExperienceCriteria = {
-    minimumYears: number; titles: Array<string>;
+    minimumYears: number; titles: string;
 }
 
 export type LanguageCriteria = {
