@@ -6,7 +6,14 @@ export const visitEmployer = async (id: number): Promise<VisitEmployer> => {
         const response = await axios.get(`http://localhost:8080/employer/${id}`);
         const data = response.data;
 
-        return <VisitEmployer> data;
+        return {
+            id: data.id,
+            avatar: data.avatar,
+            name: data.name,
+            description: data.description,
+            webSite: data.webSite,
+            scale: data.scale
+        };
 
     } catch (exception) {
         throw new Error("The requested employer couldn't found");
