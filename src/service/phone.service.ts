@@ -30,3 +30,14 @@ export const updatePhone = async (phone: Phone): Promise<boolean> => {
         return false;
     }
 };
+
+export const removePhone = async (phone: Phone): Promise<boolean> => {
+    try {
+        await axios.delete(
+            `http://localhost:8080/phone/${phone.id}`
+        )
+        return true;
+    } catch (exception) {
+        return false;
+    }
+}
