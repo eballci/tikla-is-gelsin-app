@@ -132,3 +132,15 @@ export const updatePosition = async (position: Position): Promise<boolean> => {
         return false;
     }
 }
+
+export const removePosition = async (position: Position): Promise<boolean> => {
+    try {
+        await axios.delete(
+            `http://localhost:8080/position/${position.id}`
+        );
+
+        return true;
+    } catch (exception) {
+        return false;
+    }
+}
