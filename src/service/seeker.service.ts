@@ -168,3 +168,17 @@ export const updateSeeker = async (seeker: Seeker): Promise<boolean> => {
         return false;
     }
 };
+
+export const loginSeeker = async (email: string, password: string): Promise<number> => {
+    try {
+        const response = await axios.post(
+            "http://localhost:8080/seeker/login",
+            {email, password}
+        );
+        const data = response.data;
+
+        return parseInt(data);
+    } catch (exception) {
+        return 0;
+    }
+};
