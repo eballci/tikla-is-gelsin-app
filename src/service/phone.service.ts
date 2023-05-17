@@ -14,4 +14,19 @@ export const createPhone = async (phone: Phone): Promise<boolean> => {
     } catch (exception) {
         return false;
     }
-}
+};
+
+export const updatePhone = async (phone: Phone): Promise<boolean> => {
+    try {
+        await axios.patch(
+            "http://localhost:8080/phone/",
+            {
+                ...phone,
+                phoneId: phone.id
+            }
+        );
+        return true;
+    } catch (exception) {
+        return false;
+    }
+};
