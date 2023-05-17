@@ -8,6 +8,7 @@ import {
     Position
 } from "../model";
 import {visitEmployer} from "./employer.service";
+import {toEducationLevel, toLanguageLevel} from "./utils";
 
 export const getPosition = async (id: number): Promise<Position> => {
     try {
@@ -23,20 +24,10 @@ export const getPosition = async (id: number): Promise<Position> => {
             data.criteriaList.education.forEach((educationCriteria: any) => {
                 const criteria: EducationCriteria = {
                     study: educationCriteria.study,
-                    minEducationLevel: EducationLevel.DOCTORAL
+                    minEducationLevel: toEducationLevel(
+                        educationCriteria.minEducationLevel
+                    )
                 };
-
-                switch (educationCriteria.minEducationLevel) {
-                    case 1:
-                        criteria.minEducationLevel = EducationLevel.ASSOCIATE;
-                        break;
-                    case 2:
-                        criteria.minEducationLevel = EducationLevel.BACHELORS;
-                        break;
-                    case 3:
-                        criteria.minEducationLevel = EducationLevel.MASTERS;
-                        break;
-                }
 
                 educationCriteriaList.push(criteria);
             });
@@ -57,19 +48,9 @@ export const getPosition = async (id: number): Promise<Position> => {
             data.criteriaList.language.forEach((languageCriteria: any) => {
                 const criteria: LanguageCriteria = {
                     expectedLanguage: languageCriteria.expectedLanguage,
-                    expectedLevel: LanguageLevel.NATIVE
-                }
-
-                switch (languageCriteria.expectedLevel) {
-                    case 1:
-                        criteria.expectedLevel = LanguageLevel.BEGINNER;
-                        break;
-                    case 2:
-                        criteria.expectedLevel = LanguageLevel.INTERMEDIATE;
-                        break;
-                    case 3:
-                        criteria.expectedLevel = LanguageLevel.PROFESSIONAL;
-                        break;
+                    expectedLevel: toLanguageLevel(
+                        languageCriteria.expectedLevel
+                    )
                 }
 
                 languageCriteriaList.push(criteria);
