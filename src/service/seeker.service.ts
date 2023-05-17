@@ -148,3 +148,23 @@ export const getSeeker = async (id: number): Promise<Seeker> => {
         throw new Error("The requested seeker couldn't found");
     }
 };
+
+export const updateSeeker = async (seeker: Seeker): Promise<boolean> => {
+    try {
+        await axios.patch(
+            "http://localhost:8080/seeker/",
+            {
+                id: seeker.id,
+                name: seeker.name,
+                surname: seeker.surname,
+                email: seeker.email,
+                biography: seeker.biography,
+                birth: seeker.birth
+            }
+        );
+
+        return true;
+    } catch (exception) {
+        return false;
+    }
+};
