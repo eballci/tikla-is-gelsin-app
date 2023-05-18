@@ -27,4 +27,15 @@ export const updateLanguage = async (language: Language): Promise<boolean> => {
     } catch (exception) {
         return false;
     }
-}
+};
+
+export const removeLanguage = async (language: Language): Promise<boolean> => {
+    try {
+        const response = await axios.delete(
+            `http://localhost:8080/language/${language.id}`
+        );
+        return response.status === 200;
+    } catch (exception) {
+        return false;
+    }
+};
