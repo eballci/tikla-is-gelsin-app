@@ -32,4 +32,16 @@ export const updateEducation = async (education: Education): Promise<boolean> =>
     } catch (exception) {
         return false;
     }
-}
+};
+
+export const removeEducation = async (education: Education): Promise<boolean> => {
+    try {
+        const response = await axios.delete(
+            `http://localhost:8080/education/${education.id}`
+        );
+
+        return response.status === 200;
+    } catch (exception) {
+        return false;
+    }
+};
