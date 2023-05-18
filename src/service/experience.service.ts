@@ -15,3 +15,15 @@ export const createExperience = async (seekerId: number, experience: Experience)
         return false;
     }
 };
+
+export const updateExperience = async (experience: Experience): Promise<boolean> => {
+    try {
+        const response = await axios.patch(
+            "http://localhost:8080/experience/",
+            experience
+        );
+        return response.status === 200;
+    } catch (exception) {
+        return false;
+    }
+};
