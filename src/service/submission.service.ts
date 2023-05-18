@@ -1,7 +1,7 @@
 import {Submission} from "../model";
 import axios from "axios";
 
-export const removeOffer = async (submission: Submission): Promise<boolean> => {
+export const removeSubmission = async (submission: Submission): Promise<boolean> => {
     try {
         const response = await axios.delete(
             `http://localhost:8080/submission/${submission.id}`
@@ -13,7 +13,7 @@ export const removeOffer = async (submission: Submission): Promise<boolean> => {
     }
 };
 
-export const acceptOffer = async (submission: Submission): Promise<boolean> => {
+export const acceptSubmission = async (submission: Submission): Promise<boolean> => {
     try {
         const response = await axios.get(
             `http://localhost:8080/submission/accept/${submission.id}`
@@ -25,7 +25,7 @@ export const acceptOffer = async (submission: Submission): Promise<boolean> => {
     }
 };
 
-export const refuseOffer = async (submission: Submission): Promise<boolean> => {
+export const refuseSubmission = async (submission: Submission): Promise<boolean> => {
     try {
         const response = await axios.get(
             `http://localhost:8080/submission/refuse/${submission.id}`
@@ -37,7 +37,7 @@ export const refuseOffer = async (submission: Submission): Promise<boolean> => {
     }
 };
 
-export const readAllOffers = async (employerId: number): Promise<boolean> => {
+export const readAllSubmissions = async (employerId: number): Promise<boolean> => {
     try {
         const response = await axios.get(
             `http://localhost:8080/submission/read/${employerId}`
