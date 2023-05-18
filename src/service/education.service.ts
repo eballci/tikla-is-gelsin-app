@@ -17,3 +17,19 @@ export const createEducation = async (seekerId: number, education: Education): P
         return false;
     }
 };
+
+export const updateEducation = async (education: Education): Promise<boolean> => {
+    try {
+        const response = await axios.patch(
+            "http://localhost:8080/education/",
+            {
+                ...education,
+                gpa: education.GPA
+            }
+        );
+
+        return response.status === 200;
+    } catch (exception) {
+        return false;
+    }
+}
