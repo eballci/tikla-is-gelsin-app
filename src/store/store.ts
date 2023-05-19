@@ -6,13 +6,15 @@ interface SeekerSlice {
     id: number;
     me: Seeker | null;
     isFetching: boolean;
+    isFetchingFailed: boolean;
 }
 
 const initialState: SeekerSlice = {
     offerNews: 0,
     id: 0,
     me: null,
-    isFetching: true
+    isFetching: false,
+    isFetchingFailed: false,
 };
 
 const seekerSlice = createSlice({
@@ -21,9 +23,6 @@ const seekerSlice = createSlice({
     reducers: {
         resetOfferNews(state) {
             state.offerNews = 0;
-        },
-        addAmountToOfferNews(state, action: PayloadAction<number>) {
-            state.offerNews += action.payload;
         },
         resetSeekerId(state) {
             state.id = 0;
@@ -37,12 +36,6 @@ const seekerSlice = createSlice({
         setSeeker(state, action: PayloadAction<Seeker>) {
             state.me = action.payload;
         },
-        makeSeekerFetching(state) {
-            state.isFetching = true;
-        },
-        makeSeekerNoFetching(state) {
-            state.isFetching = false;
-        }
     }
 });
 
@@ -56,11 +49,8 @@ export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
 export const {
     resetOfferNews,
-    addAmountToOfferNews,
     resetSeekerId,
     setSeekerId,
     resetSeeker,
     setSeeker,
-    makeSeekerFetching,
-    makeSeekerNoFetching
 } = seekerSlice.actions;
