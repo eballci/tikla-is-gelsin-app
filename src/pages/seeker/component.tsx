@@ -10,12 +10,15 @@ import Profile from "./pages/profile";
 import {albumsOutline, briefcaseOutline, paperPlaneOutline, personOutline} from "ionicons/icons";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
 import {resetOfferNews} from "../../store/store";
-import {Redirect} from "react-router";
 import {PageType, savePageType} from "../../root/service";
+import {Redirect} from "react-router";
 
 export default function Seeker() {
     const offerNews = useAppSelector((state) => state.seeker.offerNews);
+    const seekerId = useAppSelector((state) => state.seeker.id);
     const dispatch = useAppDispatch();
+
+    console.dir(seekerId)
 
     const handleWhenTabChangedToOffers = (event: TabsCustomEvent): void => {
         if (event.detail.tab === "offers") {
@@ -29,17 +32,20 @@ export default function Seeker() {
 
     return (
         <IonReactRouter>
-            <Route path="/seeker/login" exact component={Login}/>
             <IonTabs onIonTabsDidChange={handleWhenTabChangedToOffers}>
                 <IonRouterOutlet>
-                    <Redirect exact path="/seeker" to="/seeker/feed"/>
+                    <Route exact path="/seeker">
+                        {seekerId !== 0 ? (
+                            <Redirect to="/seeker/feed"/>
+                        ) : (
+                            <Redirect to="/seeker/login"/>
+                        )}
+                    </Route>
                     <Route path="/seeker/feed" exact component={Feed}/>
                     <Route path="/seeker/offers" exact component={Offers}/>
                     <Route path="/seeker/submissions" exact component={Submissions}/>
                     <Route path="/seeker/profile" exact component={Profile}/>
-                    <Route>
-                        <Redirect to="/seeker/feed"/>
-                    </Route>
+                    <Route path="/seeker/login" exact render={() => <Login/>}/>
                 </IonRouterOutlet>
                 <IonTabBar slot="bottom">
                     <IonTabButton tab="feed" href="/seeker/feed">
