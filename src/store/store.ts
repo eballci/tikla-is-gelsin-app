@@ -1,5 +1,6 @@
 import {configureStore, createSlice, PayloadAction,} from '@reduxjs/toolkit';
 import {Seeker} from "../model";
+import {retrieveUserId, saveUserId} from "../root/persistent";
 
 interface SeekerSlice {
     offerNews: number;
@@ -11,9 +12,9 @@ interface SeekerSlice {
 
 const initialState: SeekerSlice = {
     offerNews: 0,
-    id: 0,
+    id: retrieveUserId(),
     me: null,
-    isFetching: false,
+    isFetching: true,
     isFetchingFailed: false,
 };
 
@@ -29,12 +30,10 @@ const seekerSlice = createSlice({
         },
         setSeekerId(state, action: PayloadAction<number>) {
             state.id = action.payload;
+            saveUserId(action.payload);
         },
         resetSeeker(state) {
             state.me = null;
-        },
-        setSeeker(state, action: PayloadAction<Seeker>) {
-            state.me = action.payload;
         },
     }
 });
@@ -52,5 +51,4 @@ export const {
     resetSeekerId,
     setSeekerId,
     resetSeeker,
-    setSeeker,
 } = seekerSlice.actions;

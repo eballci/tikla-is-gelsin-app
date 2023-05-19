@@ -6,7 +6,7 @@ import Greeting from "../pages/greeting";
 import Seeker from "../pages/seeker";
 import Employer from "../pages/employer";
 import React from "react";
-import {retrievePageType} from "./service";
+import {retrievePageType} from "./persistent";
 
 const Root = () => (
     <IonApp>

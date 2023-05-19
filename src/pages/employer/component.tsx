@@ -11,7 +11,7 @@ import {
     IonToolbar
 } from "@ionic/react";
 import React from "react";
-import {PageType, savePageType} from "../../root/service";
+import {PageType, savePageType} from "../../root/persistent";
 
 export default function Employer() {
 

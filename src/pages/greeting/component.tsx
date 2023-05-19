@@ -1,16 +1,8 @@
 import {IonButton, IonCol, IonContent, IonGrid, IonImg, IonPage, IonRow, IonText,} from '@ionic/react';
-import {PageType} from '../../root/service';
-import {useHistory} from 'react-router-dom';
 import InterviewImg from '../../assets/landing-img.jpg';
 import styles from './greeting.module.css';
 
 export default function Greeting() {
-    const history = useHistory();
-    const handlePageSelection = (pageType: PageType): void => {
-        //savePageType(pageType);
-        history.push(`/${pageType.toString()}`);
-    };
-
     return (
         <IonPage>
             <IonContent>

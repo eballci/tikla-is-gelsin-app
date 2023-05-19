@@ -5,6 +5,7 @@ enum PageType {
 }
 
 const pageTypeKey = "type";
+const userIdentifierKey = "id";
 
 const retrievePageType = (): PageType => {
     const pageType = localStorage.getItem(pageTypeKey);
@@ -16,13 +17,27 @@ const retrievePageType = (): PageType => {
     throw new Error("The page type is not conventional.");
 }
 
+const retrieveUserId = (): number => {
+    return parseInt(localStorage.getItem(userIdentifierKey) ?? "0");
+}
+
 const savePageType = (type: PageType): void => {
-    localStorage.clear();
     localStorage.setItem(pageTypeKey, type.toString());
 }
+
+const saveUserId = (id: number): void => {
+    localStorage.setItem(userIdentifierKey, id.toString());
+}
+
+const clearPersistentDataStore = () => {
+    localStorage.clear();
+};
 
 export {
     PageType,
     retrievePageType,
-    savePageType
+    retrieveUserId,
+    savePageType,
+    saveUserId,
+    clearPersistentDataStore
 }

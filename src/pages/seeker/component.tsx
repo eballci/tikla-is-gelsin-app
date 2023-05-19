@@ -10,7 +10,7 @@ import Profile from "./pages/profile";
 import {albumsOutline, briefcaseOutline, paperPlaneOutline, personOutline} from "ionicons/icons";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
 import {resetOfferNews} from "../../store/store";
-import {PageType, savePageType} from "../../root/service";
+import {PageType, savePageType} from "../../root/persistent";
 import {Redirect} from "react-router";
 
 export default function Seeker() {
