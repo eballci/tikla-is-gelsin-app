@@ -73,7 +73,6 @@ export const getEmployer = async (id: number): Promise<Employer> => {
                     createdAt: new Date(offer.createdAt)
                 }))
             ],
-            //çok fazla suggestion kaydı geliyor.
             suggestions: [
                 ...data.suggestions.map((suggestion: any) => ({
                     id: suggestion.id,
@@ -87,5 +86,17 @@ export const getEmployer = async (id: number): Promise<Employer> => {
         };
     } catch (exception) {
         throw new Error("The requested employer couldn't found");
+    }
+};
+
+export const updateEmployer = async (employer: Employer): Promise<boolean> => {
+    try {
+        const response = await axios.patch(
+            "http://localhost:8080/employer/",
+            employer
+        );
+        return response.status === 200;
+    } catch (exception) {
+        return false;
     }
 };
