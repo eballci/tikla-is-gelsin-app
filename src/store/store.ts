@@ -20,13 +20,13 @@ const initialState: SeekerSlice = {
 };
 
 export const fetchSeeker = createAsyncThunk("seeker/fetch", async (invokeAfter: (() => void) | undefined) => {
-    const data = await getSeeker(retrieveUserId());
     await (new Promise((resolve) => {
         setTimeout(() => {
+            if (!!invokeAfter) invokeAfter();
             resolve(null);
         }, 1000)
     }));
-    if (!!invokeAfter) invokeAfter();
+    const data = await getSeeker(retrieveUserId());
     return data;
 });
 
