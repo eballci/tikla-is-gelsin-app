@@ -1,6 +1,7 @@
-import {IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle} from "@ionic/react";
+import {IonAvatar, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle} from "@ionic/react";
 import {useAppSelector} from "../../../../store/hooks";
 import React from "react";
+import SuggestionItem from "./suggestion-item";
 
 export default function SuggestionList() {
     const suggestions = useAppSelector((state) => state.seeker.me?.suggestions);
@@ -8,14 +9,7 @@ export default function SuggestionList() {
         <>
             {
                 suggestions?.map(suggestion => (
-                    <IonCard key={suggestion.id}>
-                        <IonCardHeader>
-                            <IonCardTitle>{suggestion.position.title}</IonCardTitle>
-                            <IonCardSubtitle>%{suggestion.matchRate} Uyumluluk</IonCardSubtitle>
-                        </IonCardHeader>
-
-                        <IonCardContent>{suggestion.position.description}</IonCardContent>
-                    </IonCard>
+                    <SuggestionItem key={suggestion.id} suggestion={suggestion}></SuggestionItem>
                 ))
             }
         </>
