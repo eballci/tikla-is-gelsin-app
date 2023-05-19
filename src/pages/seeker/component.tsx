@@ -1,5 +1,5 @@
 import {IonBadge, IonIcon, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, TabsCustomEvent,} from "@ionic/react";
-import React, {useEffect} from "react";
+import React from "react";
 import {IonReactRouter} from "@ionic/react-router";
 import {Route} from "react-router-dom";
 import Login from "./pages/login";
@@ -39,11 +39,26 @@ export default function Seeker() {
                             <Redirect to="/seeker/login"/>
                         )}
                     </Route>
-                    <Route path="/seeker/feed" exact component={Feed}/>
-                    <Route path="/seeker/offers" exact component={Offers}/>
-                    <Route path="/seeker/submissions" exact component={Submissions}/>
-                    <Route path="/seeker/profile" exact component={Profile}/>
-                    <Route path="/seeker/login" exact render={() => <Login/>}/>
+                    {
+                        seekerId !== 0 ? (
+                            <>
+                                <Route path="/seeker/feed" exact component={Feed}/>
+                                <Route path="/seeker/offers" exact component={Offers}/>
+                                <Route path="/seeker/submissions" exact component={Submissions}/>
+                                <Route path="/seeker/profile" exact component={Profile}/>
+                                <Route path="/seeker/">
+                                    <Redirect to="/seeker/feed"/>
+                                </Route>
+                            </>
+                        ) : (
+                            <>
+                                <Route path="/seeker/login" exact render={() => <Login/>}/>
+                                <Route path="/seeker/">
+                                    <Redirect to="/seeker/login"/>
+                                </Route>
+                            </>
+                        )
+                    }
                 </IonRouterOutlet>
                 <IonTabBar slot="bottom">
                     <IonTabButton tab="feed" href="/seeker/feed">
