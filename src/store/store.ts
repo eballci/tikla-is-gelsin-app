@@ -9,7 +9,7 @@ interface SeekerSlice {
 }
 
 const initialState: SeekerSlice = {
-    offerNews: 20,
+    offerNews: 0,
     id: 0,
     me: null,
     isFetching: true
