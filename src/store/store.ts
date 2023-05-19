@@ -5,7 +5,7 @@ interface SeekerSlice {
 }
 
 const initialState: SeekerSlice = {
-    offerNews: 0,
+    offerNews: 20,
 };
 
 const seekerSlice = createSlice({
@@ -22,7 +22,9 @@ const seekerSlice = createSlice({
 });
 
 export const store = configureStore({
-    reducer: seekerSlice.reducer,
+    reducer: {
+        seeker: seekerSlice.reducer
+    },
 });
 
 export type AppDispatch = typeof store.dispatch;

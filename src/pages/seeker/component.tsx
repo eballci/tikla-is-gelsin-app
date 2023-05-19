@@ -14,7 +14,7 @@ import {Redirect} from "react-router";
 import {PageType, savePageType} from "../../root/service";
 
 export default function Seeker() {
-    const offerNews = useAppSelector((state) => state.offerNews);
+    const offerNews = useAppSelector((state) => state.seeker.offerNews);
     const dispatch = useAppDispatch();
 
     const handleWhenTabChangedToOffers = (event: TabsCustomEvent): void => {
