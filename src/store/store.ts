@@ -1,6 +1,7 @@
-import {configureStore, createSlice, PayloadAction,} from '@reduxjs/toolkit';
+import {configureStore, createAsyncThunk, createSlice, PayloadAction,} from '@reduxjs/toolkit';
 import {Seeker} from "../model";
 import {retrieveUserId, saveUserId} from "../root/persistent";
+import {getSeeker} from "../service/seeker.service";
 
 interface SeekerSlice {
     offerNews: number;
@@ -17,6 +18,17 @@ const initialState: SeekerSlice = {
     isFetching: true,
     isFetchingFailed: false,
 };
+
+export const fetchSeeker = createAsyncThunk("seeker/fetch", async (invokeAfter: (() => void) | undefined) => {
+    const data = await getSeeker(retrieveUserId());
+    await (new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(null);
+        }, 1000)
+    }));
+    if (!!invokeAfter) invokeAfter();
+    return data;
+});
 
 const seekerSlice = createSlice({
     name: "seeker",
@@ -35,6 +47,21 @@ const seekerSlice = createSlice({
         resetSeeker(state) {
             state.me = null;
         },
+    },
+    extraReducers: builder => {
+        builder
+            .addCase(fetchSeeker.pending, (state) => {
+                state.isFetching = true;
+                state.isFetchingFailed = false;
+            })
+            .addCase(fetchSeeker.rejected, (state) => {
+                state.isFetching = false;
+                state.isFetchingFailed = true;
+            })
+            .addCase(fetchSeeker.fulfilled, (state, action) => {
+                state.isFetching = state.isFetchingFailed = false;
+                state.me = action.payload;
+            });
     }
 });
 
@@ -42,6 +69,11 @@ export const store = configureStore({
     reducer: {
         seeker: seekerSlice.reducer
     },
+    middleware: (getDefaultMiddleware) => (
+        getDefaultMiddleware({
+            serializableCheck: false,
+        })
+    )
 });
 
 export type AppDispatch = typeof store.dispatch;
