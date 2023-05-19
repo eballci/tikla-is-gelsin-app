@@ -100,3 +100,17 @@ export const updateEmployer = async (employer: Employer): Promise<boolean> => {
         return false;
     }
 };
+
+export const loginEmployer = async (email: string, password: string): Promise<number> => {
+    try {
+        const response = await axios.post(
+            "http://localhost:8080/employer/login",
+            {email, password}
+        );
+        const data = response.data;
+
+        return parseInt(data);
+    } catch (exception) {
+        return 0;
+    }
+}
