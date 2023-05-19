@@ -1,5 +1,5 @@
 import {IonBadge, IonIcon, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, TabsCustomEvent,} from "@ionic/react";
-import React from "react";
+import React, {useEffect} from "react";
 import {IonReactRouter} from "@ionic/react-router";
 import {Route} from "react-router-dom";
 import Login from "./pages/login";
@@ -16,9 +16,7 @@ import {Redirect} from "react-router";
 export default function Seeker() {
     const offerNews = useAppSelector((state) => state.seeker.offerNews);
     const seekerId = useAppSelector((state) => state.seeker.id);
-    const dispatch = useAppDispatch();
-
-    console.dir(seekerId)
+    const dispatch = useAppDispatch()
 
     const handleWhenTabChangedToOffers = (event: TabsCustomEvent): void => {
         if (event.detail.tab === "offers") {
