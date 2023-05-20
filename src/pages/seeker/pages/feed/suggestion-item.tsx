@@ -11,7 +11,7 @@ import {
     IonContent,
     IonHeader,
     IonIcon,
-    IonModal,
+    IonModal, IonSpinner,
     IonText,
     IonTitle,
     IonToolbar,
@@ -130,7 +130,7 @@ export default function SuggestionItem({suggestion}: { suggestion: PositionSugge
                                     disabled={isSubmitting || isIgnoring}
                                     expand="block"
                                     onClick={handleSubmit}>
-                                    {isSubmitting && "Başvuruluyor..."}
+                                    {isSubmitting && <IonSpinner/>}
                                     {!isSubmitting && "Başvur"}
                                 </IonButton>
                                 <IonButton
@@ -138,7 +138,7 @@ export default function SuggestionItem({suggestion}: { suggestion: PositionSugge
                                     expand="block"
                                     fill="outline"
                                     onClick={handleIgnore}>
-                                    {isIgnoring && "Kaldırılıyor..."}
+                                    {isIgnoring && <IonSpinner/>}
                                     {!isIgnoring && "Kaldır"}
                                 </IonButton>
                             </>

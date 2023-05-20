@@ -11,7 +11,7 @@ import {
     IonContent,
     IonHeader,
     IonIcon,
-    IonModal,
+    IonModal, IonSpinner,
     IonText,
     IonTitle,
     IonToolbar,
@@ -154,7 +154,7 @@ export default function OfferItem({offer}: { offer: Offer }) {
                                     disabled={isAccepting || isRefusing}
                                     expand="block"
                                     onClick={handleAccept}>
-                                    {isAccepting && "Kabul Ediliyor..."}
+                                    {isAccepting && <IonSpinner/>}
                                     {!isAccepting && "Kabul Et"}
                                 </IonButton>
                                 <IonButton
@@ -162,7 +162,7 @@ export default function OfferItem({offer}: { offer: Offer }) {
                                     expand="block"
                                     fill="outline"
                                     onClick={assurance}>
-                                    {isRefusing && "Reddediliyor..."}
+                                    {isRefusing && <IonSpinner/>}
                                     {!isRefusing && "Reddet"}
                                 </IonButton>
                             </>
