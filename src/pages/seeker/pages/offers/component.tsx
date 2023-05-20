@@ -22,6 +22,7 @@ export default function Offers() {
     const isFetching = useAppSelector((state) => state.seeker.isFetching);
     const isFetchingFailed = useAppSelector((state) => state.seeker.isFetchingFailed);
     const offerCount = useAppSelector((state) => state.seeker.me?.offers)?.length;
+
     const handleRefresh = (event: CustomEvent<RefresherEventDetail>) => {
         setTimeout(() => {
             dispatch(fetchSeeker(() => {
@@ -31,6 +32,7 @@ export default function Offers() {
         }, 1000);
     };
 
+    readAllOffers(seekerId).then();
 
     return (
         <IonPage>
