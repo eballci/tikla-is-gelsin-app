@@ -32,8 +32,6 @@ export default function Offers() {
         }, 1000);
     };
 
-    readAllOffers(seekerId).then();
-
     return (
         <IonPage>
             <IonHeader>

@@ -12,6 +12,7 @@ import {useAppDispatch, useAppSelector} from "../../store/hooks";
 import {fetchSeeker, resetOfferNews} from "../../store/store";
 import {PageType, savePageType} from "../../root/persistent";
 import {Redirect} from "react-router";
+import {readAllOffers} from "../../service/offer.service";
 
 export default function Seeker() {
     const offerNews = useAppSelector((state) => state.seeker.offerNews);
@@ -25,8 +26,9 @@ export default function Seeker() {
 
     const handleWhenTabChangedToOffers = (event: TabsCustomEvent): void => {
         if (event.detail.tab === "offers") {
-            setTimeout(() => {
+            setTimeout(async () => {
                 dispatch(resetOfferNews());
+                await readAllOffers(seekerId);
             }, 250);
         }
     }
