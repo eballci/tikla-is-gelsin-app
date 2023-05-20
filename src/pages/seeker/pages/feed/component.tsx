@@ -45,7 +45,7 @@ export default function Feed() {
                 </IonRefresher>
                 {(isFetching && !isFetchingFailed) && <Skeleton/>}
                 {(!isFetching && !isFetchingFailed) && <SuggestionList/>}
-                {(suggestionCount === 0 && !isFetchingFailed) && <NoData/>}
+                {(suggestionCount === 0 && !isFetchingFailed && !isFetching) && <NoData/>}
                 {isFetchingFailed && <Error/>}
             </IonContent>
         </IonPage>

@@ -52,7 +52,7 @@ export default function Offers() {
                 </IonRefresher>
                 {(isFetching && !isFetchingFailed) && <Skeleton/>}
                 {(!isFetching && !isFetchingFailed) && <OfferList/>}
-                {(offerCount === 0 && !isFetchingFailed) && <NoData/>}
+                {(offerCount === 0 && !isFetchingFailed && !isFetching) && <NoData/>}
                 {isFetchingFailed && <Error/>}
             </IonContent>
         </IonPage>
