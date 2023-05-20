@@ -19,7 +19,7 @@ import {
 } from "@ionic/react";
 import React, {useState} from "react";
 import {PositionSuggestion} from "../../../../model";
-import {alertCircleOutline, alertOutline, checkmarkOutline, closeOutline, trashOutline} from "ionicons/icons";
+import {alertOutline, checkmarkOutline, closeOutline, trashOutline} from "ionicons/icons";
 import {ignoreSuggestion, submitSuggestion} from "../../../../service/suggestion.service";
 import {useAppDispatch} from "../../../../store/hooks";
 import {fetchSeeker} from "../../../../store/store";
