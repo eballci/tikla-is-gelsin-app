@@ -1,5 +1,5 @@
 import {configureStore, createAsyncThunk, createSlice, PayloadAction,} from '@reduxjs/toolkit';
-import {Seeker} from "../model";
+import {OfferSubmissionStatus, Seeker} from "../model";
 import {retrieveUserId, saveUserId} from "../root/persistent";
 import {getSeeker} from "../service/seeker.service";
 
@@ -61,6 +61,8 @@ const seekerSlice = createSlice({
             .addCase(fetchSeeker.fulfilled, (state, action) => {
                 state.isFetching = state.isFetchingFailed = false;
                 state.me = action.payload;
+                state.offerNews = action.payload.offers
+                    .filter(offer => offer.status == OfferSubmissionStatus.ISSUED).length;
             });
     }
 });
