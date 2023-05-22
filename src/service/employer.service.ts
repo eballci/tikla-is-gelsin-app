@@ -114,3 +114,18 @@ export const loginEmployer = async (email: string, password: string): Promise<nu
         return 0;
     }
 }
+
+export const registerEmployer = async (
+    email: string, password: string, name: string,
+): Promise<boolean> => {
+    try {
+        const response = await axios.post(
+            "http://localhost:8080/employer/",
+            {email, password, name}
+        );
+
+        return response.status === 201;
+    } catch (exception) {
+        return false;
+    }
+}

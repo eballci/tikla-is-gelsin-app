@@ -182,3 +182,21 @@ export const loginSeeker = async (email: string, password: string): Promise<numb
         return 0;
     }
 };
+
+export const registerSeeker = async (
+    email: string,
+    password: string,
+    name: string,
+    surname: string,
+    birth: Date): Promise<boolean> => {
+    try {
+        const response = await axios.post(
+            "http://localhost:8080/seeker/",
+            {email, password, name, surname, birth}
+        );
+
+        return response.status === 201;
+    } catch (exception) {
+        return false;
+    }
+};
