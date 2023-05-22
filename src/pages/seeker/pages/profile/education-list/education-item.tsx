@@ -146,9 +146,18 @@ export default function EducationItem({education}: { education: Education }) {
                             {" "}
                             {education.start.getFullYear()}
                             {" - "}
-                            {education.end.toLocaleString("tr-TR", {month: "long"})}
-                            {" "}
-                            {education.end.getFullYear()}
+                            {
+                                education.start.getTime() > education.end.getTime() ?
+                                    (
+                                        "halen"
+                                    ) : (
+                                        education.end.toLocaleString("tr-TR", {month: "long"})
+                                        +
+                                        " "
+                                        +
+                                        education.end.getFullYear()
+                                    )
+                            }
                         </IonText>
                     </IonRow>
                     <IonRow>
