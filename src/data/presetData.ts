@@ -89,7 +89,7 @@ export const Languages: Array<{ visual: string, value: string }> = [
     },
 ];
 
-export const positionTitles: Array<{ visual: string, value: string }> = [
+export const Positions: Array<{ visual: string, value: string }> = [
     {
         visual: "Bilgisayar Mühendisi",
         value: "computer engineer"
@@ -312,3 +312,29 @@ export const positionTitles: Array<{ visual: string, value: string }> = [
     },
 ];
 
+export const Studies: Array<{ visual: string, value: string }> = [
+    {
+        visual: "Bilgisayar Mühendisliği",
+        value: "computer engineering"
+    },
+    {
+        visual: "Elektrik Mühendisliği",
+        value: "eletricity engineering"
+    },
+    {
+        visual: "Endüstri Mühendisliği",
+        value: "industrial engineering"
+    },
+    {
+        visual: "Kimya Mühendisliği",
+        value: "chemistry engineering"
+    },
+    {
+        visual: "Makine Mühendisliği",
+        value: "mechanical engineering"
+    },
+    {
+        visual: "Yazılım Mühendisliği",
+        value: "software engineering"
+    },
+];
