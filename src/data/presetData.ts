@@ -127,6 +127,14 @@ export const Positions: Array<{ visual: string, value: string }> = [
         value: "react developer"
     },
     {
+        visual: "C Geliştirici",
+        value: "c developer"
+    },
+    {
+        visual: "C++ Geliştirici",
+        value: "c++ developer"
+    },
+    {
         visual: "Oyun Tasarımcısı",
         value: "game designer"
     },
@@ -181,7 +189,7 @@ export const Positions: Array<{ visual: string, value: string }> = [
         value: "electrical electronics engineer"
     },
     {
-        visual:"Tekstil Mühendisliği",
+        visual:"Tekstil Mühendisi",
         value:"textile engineer"
     },
     {
@@ -225,12 +233,12 @@ export const Positions: Array<{ visual: string, value: string }> = [
         value:"forest engineer"
     },
     {
-      visual:"Havacılık Mühendisliği",
-      value:"aeronautical engineering"
+      visual:"Havacılık Mühendisi",
+      value:"aeronautical engineer"
     },
     {
-        visual:"Harita Mühendisliği",
-        value:"map engineering"
+        visual:"Harita Mühendisi",
+        value:"map engineer"
     },
 //karışık meslekler
     {
@@ -307,8 +315,8 @@ export const Positions: Array<{ visual: string, value: string }> = [
         value: "english teacher"
     },
     {
-      visual:"Okul Öncesi Öğretmenlik",
-      value:"preschool teaching"
+      visual:"Okul Öncesi Öğretmeni",
+      value:"preschool teacher"
     },
 ];
 
@@ -336,5 +344,139 @@ export const Studies: Array<{ visual: string, value: string }> = [
     {
         visual: "Yazılım Mühendisliği",
         value: "software engineering"
+    },
+    {
+        visual:"Tekstil Mühendisliği",
+        value:"textile engineering"
+    },
+    {
+        visual:"Biyosistem Mühendisliği",
+        value:"biosystems engineering"
+    },
+    {
+        visual: "Harita Mühendisliği",
+        value: "map engineering"
+    },
+    {
+        visual: "Ziraat Mühendisliği",
+        value: "agricultural engineering"
+    },
+    {
+        visual: "Matematik Mühendisliği",
+        value: "math engineering"
+    },
+    {
+        visual: "Mekatronik Mühendisliği",
+        value: "mechatronic engineering"
+    },
+    {
+        visual: "Orman Mühendisliği",
+        value: "forest  engineering"
+    },
+    {
+        visual: "Gıda Mühendisliği",
+        value: "food engineering"
+    },
+    {
+        visual: "İnşaat Mühendisliği",
+        value: "construction engineering"
+    },
+    {
+        visual: "Havacılık Mühendisliği",
+        value: " aeronautical engineering"
+    },
+
+    {
+        visual:"Hemşire",
+        value:"nurse"
+    },
+    {
+        visual:"Matematik Öğretmenliği",
+        value:"math teaching"
+    },
+    {
+        visual:"Fizik Öğretmenliği",
+        value:"physics teaching"
+    },
+    {
+        visual:"Kimya Öğretmenliği",
+        value:"chemistry teaching"
+    },
+    {
+        visual:"Biyoloji Öğretmenliği",
+        value:"biology teaching"
+    },
+    {
+        visual: "Türkçe Öğretmenliği",
+        value: "turkish teaching"
+    },
+    {
+        visual: "Almanca Öğretmenliği",
+        value: "teaching german"
+    },
+    {
+        visual: "İngilizce Öğretmenliği",
+        value: "english teaching"
+    },
+    {
+        visual:"Okul Öncesi Öğretmenliği",
+        value:"preschool teaching"
+    },
+// 2 yıllıklar
+    {
+        visual: "Bilgisayar Programcılığı",
+        value: "computer programming"
+    },
+    {
+        visual: "Bilgisayar Teknolojisi",
+        value: "computer technology"
+    },
+    {
+        visual: "Bilişim Güvenliği Teknolojisi",
+        value: "information security technology"
+    },
+    {
+        visual: "Bankacılık ve Sigortacı",
+        value: "banking and insurer"
+    },
+    {
+        visual: "Eczane Hizmetleri",
+        value: "pharmacy services"
+    },
+    {
+        visual: "Elektrik",
+        value: "electric"
+    },
+    {
+        visual: "Gıda Teknolojisi ",
+        value: "food technology"
+    },
+    {
+        visual: "Harita Kadastro",
+        value: "map cadastre"
+    },
+    {
+        visual: "Uçak Teknolojisi",
+        value: "aircraft technology"
+    },
+    {
+        visual: "Siber Güvenlik",
+        value: "cyber security"
+    },
+    {
+        visual: "Makine",
+        value: "machine"
+    },
+    {
+        visual: " Biyokimya",
+        value: "biochemistry"
+    },
+    {
+        visual: "Muhasebe ve Vergi Uygulamaları",
+        value: "accounting and tax practices"
+    },
+    {
+        visual: "Mekatronik",
+        value: "mechatronics"
     },
 ];
