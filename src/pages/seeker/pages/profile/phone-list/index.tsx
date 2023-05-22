@@ -27,7 +27,9 @@ export default function PhoneList() {
                 </IonItemDivider>
                 {
                     phones?.map(phone => (
-                        <PhoneItem phone={phone}/>
+                        <PhoneItem
+                            key={phone.id}
+                            phone={phone}/>
                     ))
                 }
                 {
