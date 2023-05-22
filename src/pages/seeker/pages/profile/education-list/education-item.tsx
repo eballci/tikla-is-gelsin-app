@@ -35,7 +35,6 @@ export default function EducationItem({education}: { education: Education }) {
     const [presentAlert] = useIonAlert();
     const [presentToast] = useIonToast();
     const [copy, setCopy] = useState<Education>({...education});
-    const [isStartOpen, seeIsStartopen] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
     const [isRemoving, setIsRemoving] = useState(false);
