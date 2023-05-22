@@ -17,7 +17,7 @@ export default function PhoneList() {
                     <IonButtons
                         slot="end">
                         <IonButton
-                        onClick={() => setCreateModalOpen(true)}>
+                            onClick={() => setCreateModalOpen(true)}>
                             <IonIcon
                                 color="dark"
                                 slot="end"

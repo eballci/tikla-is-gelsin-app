@@ -24,10 +24,9 @@ import {
 import React, {useState} from "react";
 import {alertOutline, checkmarkOutline, closeOutline} from "ionicons/icons";
 import {EducationLevelTranslation, Studies} from "../../../../../data/presetData";
-import {createPhone} from "../../../../../service/phone.service";
 import {fetchSeeker} from "../../../../../store/store";
 import {createEducation} from "../../../../../service/education.service";
-import {Education, EducationLevel} from "../../../../../model";
+import {Education} from "../../../../../model";
 import {toEducationLevel} from "../../../../../service/utils";
 
 export default function CreateEducation(

@@ -16,7 +16,8 @@ import {
     IonText,
     IonTitle,
     IonToolbar,
-    useIonAlert, useIonToast
+    useIonAlert,
+    useIonToast
 } from "@ionic/react";
 import {alertOutline, checkmarkOutline, closeOutline, createOutline, trashOutline} from "ionicons/icons";
 import React, {useState} from "react";

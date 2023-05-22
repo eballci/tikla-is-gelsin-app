@@ -1,5 +1,5 @@
 import React from "react";
-import {IonItem, IonItemGroup, IonLabel, IonSkeletonText, IonText, IonThumbnail, IonTitle} from "@ionic/react";
+import {IonItem, IonItemGroup, IonSkeletonText, IonThumbnail, IonTitle} from "@ionic/react";
 
 export default function Skeleton() {
     return (
