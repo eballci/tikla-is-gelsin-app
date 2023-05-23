@@ -24,6 +24,7 @@ import {alertOutline, checkmarkOutline, closeOutline} from "ionicons/icons";
 import {useAppDispatch} from "../../../../store/hooks";
 import {removeSubmission} from "../../../../service/submission.service";
 import {fetchSeeker} from "../../../../store/store";
+import {Positions} from "../../../../data/presetData";
 
 export default function SubmissionItem({submission}: { submission: Submission }) {
     const [modalOpen, setModalOpen] = useState(false);
@@ -143,7 +144,12 @@ export default function SubmissionItem({submission}: { submission: Submission })
                         <img alt="Silhouette of a person's head"
                              src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
                     </IonAvatar>
-                    <IonCardTitle>{submission.position.title}</IonCardTitle>
+                    <IonCardTitle>
+                        {
+                            Positions
+                                .filter(p => p.value === submission.position.title)[0].visual
+                        }
+                    </IonCardTitle>
                 </IonCardHeader>
                 <IonCardContent>
                     <IonText>
@@ -162,7 +168,12 @@ export default function SubmissionItem({submission}: { submission: Submission })
                                 <IonIcon icon={closeOutline}></IonIcon>
                             </IonButton>
                         </IonButtons>
-                        <IonTitle>{submission.position.title}</IonTitle>
+                        <IonTitle>
+                            {
+                                Positions
+                                    .filter(p => p.value === submission.position.title)[0].visual
+                            }
+                        </IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <IonContent className="ion-padding">

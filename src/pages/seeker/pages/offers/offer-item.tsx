@@ -23,6 +23,7 @@ import {useAppDispatch} from "../../../../store/hooks";
 import {acceptOffer, refuseOffer} from "../../../../service/offer.service";
 import {alertOutline, checkmarkOutline, closeOutline, trashOutline} from "ionicons/icons";
 import {fetchSeeker} from "../../../../store/store";
+import {Positions} from "../../../../data/presetData";
 
 export default function OfferItem({offer}: { offer: Offer }) {
     const [modalOpen, setModalOpen] = useState(false);
@@ -120,7 +121,12 @@ export default function OfferItem({offer}: { offer: Offer }) {
                     <img alt="Silhouette of a person's head"
                          src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
                 </IonAvatar>
-                <IonCardTitle>{offer.position.title}</IonCardTitle>
+                <IonCardTitle>
+                    {
+                        Positions
+                            .filter(p => p.value === offer.position.title)[0].visual
+                    }
+                </IonCardTitle>
             </IonCardHeader>
             <IonCardContent>{offer.position.description}</IonCardContent>
             {isAccepted && (
@@ -142,7 +148,12 @@ export default function OfferItem({offer}: { offer: Offer }) {
                                 <IonIcon icon={closeOutline}></IonIcon>
                             </IonButton>
                         </IonButtons>
-                        <IonTitle>{offer.position.title}</IonTitle>
+                        <IonTitle>
+                            {
+                                Positions
+                                    .filter(p => p.value === offer.position.title)[0].visual
+                            }
+                        </IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <IonContent className="ion-padding">

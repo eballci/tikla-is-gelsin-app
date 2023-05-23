@@ -23,6 +23,7 @@ import {alertOutline, checkmarkOutline, closeOutline, trashOutline} from "ionico
 import {ignoreSuggestion, submitSuggestion} from "../../../../service/suggestion.service";
 import {useAppDispatch} from "../../../../store/hooks";
 import {fetchSeeker} from "../../../../store/store";
+import {Positions} from "../../../../data/presetData";
 
 export default function SuggestionItem({suggestion}: { suggestion: PositionSuggestion }) {
     const [modalOpen, setModalOpen] = useState(false);
@@ -99,7 +100,12 @@ export default function SuggestionItem({suggestion}: { suggestion: PositionSugge
                     <img alt="Silhouette of a person's head"
                          src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
                 </IonAvatar>
-                <IonCardTitle>{suggestion.position.title}</IonCardTitle>
+                <IonCardTitle>
+                    {
+                        Positions
+                            .filter(p => p.value === suggestion.position.title)[0].visual
+                    }
+                </IonCardTitle>
                 <IonCardSubtitle>%{suggestion.matchRate} Uyumluluk</IonCardSubtitle>
             </IonCardHeader>
 
@@ -117,7 +123,12 @@ export default function SuggestionItem({suggestion}: { suggestion: PositionSugge
                                 <IonIcon icon={closeOutline}></IonIcon>
                             </IonButton>
                         </IonButtons>
-                        <IonTitle>{suggestion.position.title}</IonTitle>
+                        <IonTitle>
+                            {
+                                Positions
+                                    .filter(p => p.value === suggestion.position.title)[0].visual
+                            }
+                        </IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <IonContent className="ion-padding">
