@@ -5,7 +5,8 @@ const config: CapacitorConfig = {
   appName: 'Tıkla İş Gelsin',
   webDir: 'dist',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'http',
+    cleartext: true,
   }
 };
 
