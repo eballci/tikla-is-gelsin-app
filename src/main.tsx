@@ -15,4 +15,4 @@ root.render(
     </React.StrictMode>
 );
 
-await defineCustomElements(window);
+defineCustomElements(window).then();
