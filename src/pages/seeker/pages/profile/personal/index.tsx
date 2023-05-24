@@ -25,8 +25,7 @@ import {
     checkmarkOutline,
     closeOutline,
     createOutline,
-    settingsOutline,
-    trashOutline
+    settingsOutline
 } from "ionicons/icons";
 import React, {useState} from "react";
 import {useAppDispatch, useAppSelector} from "../../../../../store/hooks";
@@ -91,7 +90,7 @@ export default function Personal() {
             message: "Profil fotoğrafı güncellendi.",
             duration: 5000,
             position: "bottom",
-            icon: trashOutline,
+            icon: checkmarkOutline,
             color: "success"
         });
         setTimeout(() => dispatch(fetchSeeker()), 3500);
