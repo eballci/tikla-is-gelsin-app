@@ -1,13 +1,4 @@
-import {
-    IonContent,
-    IonHeader,
-    IonPage,
-    IonRefresher,
-    IonRefresherContent,
-    IonTitle,
-    IonToolbar,
-    RefresherEventDetail
-} from "@ionic/react";
+import {IonContent, IonPage, IonRefresher, IonRefresherContent, RefresherEventDetail} from "@ionic/react";
 import React from "react";
 import {useAppDispatch, useAppSelector} from "../../../../store/hooks";
 import {fetchSeeker} from "../../../../store/store";
@@ -28,17 +19,7 @@ export default function Profile() {
 
     return (
         <IonPage>
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Profil</IonTitle>
-                </IonToolbar>
-            </IonHeader>
-            <IonContent fullscreen>
-                <IonHeader collapse="condense">
-                    <IonToolbar>
-                        <IonTitle size="large">Profil</IonTitle>
-                    </IonToolbar>
-                </IonHeader>
+            <IonContent>
                 <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
                     <IonRefresherContent></IonRefresherContent>
                 </IonRefresher>
