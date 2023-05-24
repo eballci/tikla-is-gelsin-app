@@ -201,3 +201,25 @@ export const registerSeeker = async (
         return false;
     }
 };
+
+export const updateAvatar = async (seekerId: number, file: File): Promise<boolean> => {
+    const formData = new FormData();
+
+    formData.append('file', file);
+
+    try {
+        const response = await axios.patch(
+            `${apiUrl}/seeker/avatar/${seekerId}`,
+            formData,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            }
+        );
+
+        return response.status === 200;
+    } catch (exception) {
+        return false;
+    }
+};

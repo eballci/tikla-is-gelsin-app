@@ -129,4 +129,26 @@ export const registerEmployer = async (
     } catch (exception) {
         return false;
     }
-}
+};
+
+export const updateAvatar = async (employerId: number, file: File): Promise<boolean> => {
+    const formData = new FormData();
+
+    formData.append('file', file);
+
+    try {
+        const response = await axios.patch(
+            `${apiUrl}/employer/avatar/${employerId}`,
+            formData,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            }
+        );
+
+        return response.status === 200;
+    } catch (exception) {
+        return false;
+    }
+};
