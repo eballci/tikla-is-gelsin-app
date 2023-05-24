@@ -3,10 +3,11 @@ import axios from "axios";
 import {getPosition} from "./position.service";
 import {toOfferSuggestionStatus} from "./utils";
 import {visitSeeker} from "./seeker.service";
+import {apiUrl} from "../../environment/environment";
 
 export const visitEmployer = async (id: number): Promise<VisitEmployer> => {
     try {
-        const response = await axios.get(`http://localhost:8080/employer/${id}`);
+        const response = await axios.get(`${apiUrl}/employer/${id}`);
         const data = response.data;
 
         return {
@@ -25,7 +26,7 @@ export const visitEmployer = async (id: number): Promise<VisitEmployer> => {
 
 export const getEmployer = async (id: number): Promise<Employer> => {
     try {
-        const response = await axios.get(`http://localhost:8080/employer/me/${id}`);
+        const response = await axios.get(`${apiUrl}/employer/me/${id}`);
         const data = response.data;
         const requestedPositions: Array<Position> = [];
         const requestedSeekers: Array<VisitSeeker> = [];
@@ -92,7 +93,7 @@ export const getEmployer = async (id: number): Promise<Employer> => {
 export const updateEmployer = async (employer: Employer): Promise<boolean> => {
     try {
         const response = await axios.patch(
-            "http://localhost:8080/employer/",
+            `${apiUrl}/employer/`,
             employer
         );
         return response.status === 200;
@@ -104,7 +105,7 @@ export const updateEmployer = async (employer: Employer): Promise<boolean> => {
 export const loginEmployer = async (email: string, password: string): Promise<number> => {
     try {
         const response = await axios.post(
-            "http://localhost:8080/employer/login",
+            `${apiUrl}/employer/login`,
             {email, password}
         );
         const data = response.data;
@@ -120,7 +121,7 @@ export const registerEmployer = async (
 ): Promise<boolean> => {
     try {
         const response = await axios.post(
-            "http://localhost:8080/employer/",
+            `${apiUrl}/employer/`,
             {email, password, name}
         );
 

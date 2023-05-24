@@ -1,18 +1,12 @@
 import axios from "axios";
-import {
-    EducationCriteria,
-    EducationLevel,
-    ExperienceCriteria,
-    LanguageCriteria,
-    LanguageLevel,
-    Position
-} from "../model";
+import {EducationCriteria, ExperienceCriteria, LanguageCriteria, Position} from "../model";
 import {visitEmployer} from "./employer.service";
 import {toEducationLevel, toLanguageLevel} from "./utils";
+import {apiUrl} from "../../environment/environment";
 
 export const getPosition = async (id: number): Promise<Position> => {
     try {
-        const response = await axios.get(`http://localhost:8080/position/${id}`);
+        const response = await axios.get(`${apiUrl}/position/${id}`);
         const data = response.data;
         const employer = await visitEmployer(data.employerId);
 
@@ -104,7 +98,7 @@ export const createPosition = async (position: Position): Promise<boolean> => {
         };
 
         const response = await axios.post(
-            "http://localhost:8080/position/",
+            `${apiUrl}/position/`,
             request
         );
 
@@ -146,7 +140,7 @@ export const updatePosition = async (position: Position): Promise<boolean> => {
         };
 
         await axios.patch(
-            "http://localhost:8080/position/",
+            `${apiUrl}/position/`,
             request
         );
 
@@ -159,7 +153,7 @@ export const updatePosition = async (position: Position): Promise<boolean> => {
 export const removePosition = async (position: Position): Promise<boolean> => {
     try {
         await axios.delete(
-            `http://localhost:8080/position/${position.id}`
+            `${apiUrl}/position/${position.id}`
         );
 
         return true;

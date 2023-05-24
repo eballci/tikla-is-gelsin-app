@@ -1,10 +1,11 @@
 import {Phone} from "../model";
 import axios from "axios";
+import {apiUrl} from "../../environment/environment";
 
 export const createPhone = async (seekerId: number, phone: Phone): Promise<boolean> => {
     try {
         await axios.post(
-            "http://localhost:8080/phone/",
+            `${apiUrl}/phone/`,
             {
                 ...phone,
                 seekerId
@@ -19,7 +20,7 @@ export const createPhone = async (seekerId: number, phone: Phone): Promise<boole
 export const updatePhone = async (phone: Phone): Promise<boolean> => {
     try {
         await axios.patch(
-            "http://localhost:8080/phone/",
+            `${apiUrl}/phone/`,
             {
                 ...phone,
                 phoneId: phone.id
@@ -34,7 +35,7 @@ export const updatePhone = async (phone: Phone): Promise<boolean> => {
 export const removePhone = async (phone: Phone): Promise<boolean> => {
     try {
         await axios.delete(
-            `http://localhost:8080/phone/${phone.id}`
+            `${apiUrl}/phone/${phone.id}`
         )
         return true;
     } catch (exception) {

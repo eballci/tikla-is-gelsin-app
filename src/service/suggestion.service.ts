@@ -1,10 +1,11 @@
 import axios from "axios";
 import {PositionSuggestion, SeekerSuggestion} from "../model";
+import {apiUrl} from "../../environment/environment";
 
 export const ignoreSuggestion = async (suggestion: PositionSuggestion | SeekerSuggestion): Promise<boolean> => {
     try {
         const response = await axios.get(
-            `http://localhost:8080/suggestion/ignore/${suggestion.id}`
+            `${apiUrl}/suggestion/ignore/${suggestion.id}`
         );
 
         return response.status === 200;
@@ -16,7 +17,7 @@ export const ignoreSuggestion = async (suggestion: PositionSuggestion | SeekerSu
 export const offerSuggestion = async (suggestion: SeekerSuggestion): Promise<boolean> => {
     try {
         const response = await axios.get(
-            `http://localhost:8080/suggestion/offer/${suggestion.id}`
+            `${apiUrl}/suggestion/offer/${suggestion.id}`
         );
 
         return response.status === 200;
@@ -28,7 +29,7 @@ export const offerSuggestion = async (suggestion: SeekerSuggestion): Promise<boo
 export const submitSuggestion = async (suggestion: PositionSuggestion): Promise<boolean> => {
     try {
         const response = await axios.get(
-            `http://localhost:8080/suggestion/submit/${suggestion.id}`
+            `${apiUrl}/suggestion/submit/${suggestion.id}`
         );
 
         return response.status === 200;

@@ -1,10 +1,11 @@
 import {Offer} from "../model";
 import axios from "axios";
+import {apiUrl} from "../../environment/environment";
 
 export const removeOffer = async (offer: Offer): Promise<boolean> => {
     try {
         const response = await axios.delete(
-            `http://localhost:8080/offer/${offer.id}`
+            `${apiUrl}/offer/${offer.id}`
         );
 
         return response.status === 200;
@@ -16,7 +17,7 @@ export const removeOffer = async (offer: Offer): Promise<boolean> => {
 export const acceptOffer = async (offer: Offer): Promise<boolean> => {
     try {
         const response = await axios.get(
-            `http://localhost:8080/offer/accept/${offer.id}`
+            `${apiUrl}/offer/accept/${offer.id}`
         );
 
         return response.status === 200;
@@ -28,7 +29,7 @@ export const acceptOffer = async (offer: Offer): Promise<boolean> => {
 export const refuseOffer = async (offer: Offer): Promise<boolean> => {
     try {
         const response = await axios.get(
-            `http://localhost:8080/offer/refuse/${offer.id}`
+            `${apiUrl}/offer/refuse/${offer.id}`
         );
 
         return response.status === 200;
@@ -40,7 +41,7 @@ export const refuseOffer = async (offer: Offer): Promise<boolean> => {
 export const readAllOffers = async (seekerId: number): Promise<boolean> => {
     try {
         const response = await axios.get(
-            `http://localhost:8080/offer/read/${seekerId}`
+            `${apiUrl}/offer/read/${seekerId}`
         );
 
         return response.status === 200;

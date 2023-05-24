@@ -1,10 +1,11 @@
 import {Education} from "../model";
 import axios from "axios";
+import {apiUrl} from "../../environment/environment";
 
 export const createEducation = async (seekerId: number, education: Education): Promise<boolean> => {
     try {
         const response = await axios.post(
-            "http://localhost:8080/education/",
+            `${apiUrl}/education/`,
             {
                 ...education,
                 seekerId,
@@ -21,7 +22,7 @@ export const createEducation = async (seekerId: number, education: Education): P
 export const updateEducation = async (education: Education): Promise<boolean> => {
     try {
         const response = await axios.patch(
-            "http://localhost:8080/education/",
+            `${apiUrl}/education/`,
             {
                 ...education,
                 gpa: education.GPA
@@ -37,7 +38,7 @@ export const updateEducation = async (education: Education): Promise<boolean> =>
 export const removeEducation = async (education: Education): Promise<boolean> => {
     try {
         const response = await axios.delete(
-            `http://localhost:8080/education/${education.id}`
+            `${apiUrl}/education/${education.id}`
         );
 
         return response.status === 200;

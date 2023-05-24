@@ -2,11 +2,12 @@ import {Position, Seeker, VisitSeeker} from "../model";
 import axios from "axios";
 import {toEducationLevel, toLanguageLevel, toOfferSuggestionStatus} from "./utils";
 import {getPosition} from "./position.service";
+import {apiUrl} from "../../environment/environment";
 
 export const visitSeeker = async (id: number): Promise<VisitSeeker> => {
     try {
         const response = await axios.get(
-            `http://localhost:8080/seeker/${id}`
+            `${apiUrl}/seeker/${id}`
         );
         const data = response.data;
 
@@ -57,7 +58,7 @@ export const visitSeeker = async (id: number): Promise<VisitSeeker> => {
 export const getSeeker = async (id: number): Promise<Seeker> => {
     try {
         const response = await axios.get(
-            `http://localhost:8080/seeker/me/${id}`
+            `${apiUrl}/seeker/me/${id}`
         );
         const data = response.data;
         const requestedPositionIds = new Set([
@@ -152,7 +153,7 @@ export const getSeeker = async (id: number): Promise<Seeker> => {
 export const updateSeeker = async (seeker: Seeker): Promise<boolean> => {
     try {
         await axios.patch(
-            "http://localhost:8080/seeker/",
+            `${apiUrl}/seeker/`,
             {
                 id: seeker.id,
                 name: seeker.name,
@@ -172,7 +173,7 @@ export const updateSeeker = async (seeker: Seeker): Promise<boolean> => {
 export const loginSeeker = async (email: string, password: string): Promise<number> => {
     try {
         const response = await axios.post(
-            "http://localhost:8080/seeker/login",
+            `${apiUrl}/seeker/login`,
             {email, password}
         );
         const data = response.data;
@@ -191,7 +192,7 @@ export const registerSeeker = async (
     birth: Date): Promise<boolean> => {
     try {
         const response = await axios.post(
-            "http://localhost:8080/seeker/",
+            `${apiUrl}/seeker/`,
             {email, password, name, surname, birth}
         );
 

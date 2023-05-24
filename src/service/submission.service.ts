@@ -1,10 +1,11 @@
 import {Submission} from "../model";
 import axios from "axios";
+import {apiUrl} from "../../environment/environment";
 
 export const removeSubmission = async (submission: Submission): Promise<boolean> => {
     try {
         const response = await axios.delete(
-            `http://localhost:8080/submission/${submission.id}`
+            `${apiUrl}/submission/${submission.id}`
         );
 
         return response.status === 200;
@@ -16,7 +17,7 @@ export const removeSubmission = async (submission: Submission): Promise<boolean>
 export const acceptSubmission = async (submission: Submission): Promise<boolean> => {
     try {
         const response = await axios.get(
-            `http://localhost:8080/submission/accept/${submission.id}`
+            `${apiUrl}/submission/accept/${submission.id}`
         );
 
         return response.status === 200;
@@ -28,7 +29,7 @@ export const acceptSubmission = async (submission: Submission): Promise<boolean>
 export const refuseSubmission = async (submission: Submission): Promise<boolean> => {
     try {
         const response = await axios.get(
-            `http://localhost:8080/submission/refuse/${submission.id}`
+            `${apiUrl}/submission/refuse/${submission.id}`
         );
 
         return response.status === 200;
@@ -40,7 +41,7 @@ export const refuseSubmission = async (submission: Submission): Promise<boolean>
 export const readAllSubmissions = async (employerId: number): Promise<boolean> => {
     try {
         const response = await axios.get(
-            `http://localhost:8080/submission/read/${employerId}`
+            `${apiUrl}/submission/read/${employerId}`
         );
 
         return response.status === 200;
