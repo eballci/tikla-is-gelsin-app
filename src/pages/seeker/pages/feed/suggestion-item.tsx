@@ -21,7 +21,7 @@ import {ignoreSuggestion, submitSuggestion} from "../../../../service/suggestion
 import {useAppDispatch} from "../../../../store/hooks";
 import {fetchSeeker} from "../../../../store/store";
 import {Positions} from "../../../../data/presetData";
-import PositionInCard from "../../components/position-in-card/positionInCard";
+import PositionInCard from "../../components/position-in-card";
 
 export default function SuggestionItem({suggestion}: { suggestion: PositionSuggestion }) {
     const [modalOpen, setModalOpen] = useState(false);

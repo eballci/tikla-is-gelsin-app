@@ -22,7 +22,7 @@ import {useAppDispatch} from "../../../../store/hooks";
 import {removeSubmission} from "../../../../service/submission.service";
 import {fetchSeeker} from "../../../../store/store";
 import {Positions} from "../../../../data/presetData";
-import PositionInCard from "../../components/position-in-card/positionInCard";
+import PositionInCard from "../../components/position-in-card";
 
 export default function SubmissionItem({submission}: { submission: Submission }) {
     const [modalOpen, setModalOpen] = useState(false);
