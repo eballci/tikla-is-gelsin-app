@@ -1,12 +1,9 @@
 import {Submission} from "../../../../model";
 import {
-    IonAvatar,
     IonButton,
     IonButtons,
     IonCard,
     IonCardContent,
-    IonCardHeader,
-    IonCardTitle,
     IonChip,
     IonContent,
     IonHeader,
@@ -25,6 +22,7 @@ import {useAppDispatch} from "../../../../store/hooks";
 import {removeSubmission} from "../../../../service/submission.service";
 import {fetchSeeker} from "../../../../store/store";
 import {Positions} from "../../../../data/presetData";
+import PositionInCard from "../../components/position-in-card/positionInCard";
 
 export default function SubmissionItem({submission}: { submission: Submission }) {
     const [modalOpen, setModalOpen] = useState(false);
@@ -91,6 +89,7 @@ export default function SubmissionItem({submission}: { submission: Submission })
                 <>
                     <IonChip>Beklemede</IonChip>
                     <IonButton
+                        className="ion-no-margin ion-margin-top"
                         disabled={isRemoved}
                         onClick={assurance}
                         expand="block"
@@ -112,6 +111,7 @@ export default function SubmissionItem({submission}: { submission: Submission })
                 <>
                     <IonChip color="danger">Reddedildi</IonChip>
                     <IonButton
+                        className="ion-no-margin ion-margin-top"
                         disabled={isRemoved}
                         onClick={assurance}
                         expand="block"
@@ -139,22 +139,8 @@ export default function SubmissionItem({submission}: { submission: Submission })
     return (
         <>
             <IonCard onClick={() => setModalOpen(true)}>
-                <IonCardHeader>
-                    <IonAvatar>
-                        <img alt="Silhouette of a person's head"
-                             src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
-                    </IonAvatar>
-                    <IonCardTitle>
-                        {
-                            Positions
-                                .filter(p => p.value === submission.position.title)[0].visual
-                        }
-                    </IonCardTitle>
-                </IonCardHeader>
                 <IonCardContent>
-                    <IonText>
-                        {submission.position.description}
-                    </IonText>
+                    <PositionInCard position={submission.position}/>
                     {infoAndButton()}
                 </IonCardContent>
             </IonCard>

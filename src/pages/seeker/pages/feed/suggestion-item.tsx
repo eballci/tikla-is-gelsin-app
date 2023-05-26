@@ -1,17 +1,14 @@
 import {
-    IonAvatar,
     IonButton,
     IonButtons,
     IonCard,
     IonCardContent,
-    IonCardHeader,
-    IonCardSubtitle,
-    IonCardTitle,
     IonChip,
     IonContent,
     IonHeader,
     IonIcon,
-    IonModal, IonSpinner,
+    IonModal,
+    IonSpinner,
     IonText,
     IonTitle,
     IonToolbar,
@@ -24,6 +21,7 @@ import {ignoreSuggestion, submitSuggestion} from "../../../../service/suggestion
 import {useAppDispatch} from "../../../../store/hooks";
 import {fetchSeeker} from "../../../../store/store";
 import {Positions} from "../../../../data/presetData";
+import PositionInCard from "../../components/position-in-card/positionInCard";
 
 export default function SuggestionItem({suggestion}: { suggestion: PositionSuggestion }) {
     const [modalOpen, setModalOpen] = useState(false);
@@ -95,24 +93,13 @@ export default function SuggestionItem({suggestion}: { suggestion: PositionSugge
 
     return (
         <IonCard>
-            <IonCardHeader>
-                <IonAvatar>
-                    <img alt="Silhouette of a person's head"
-                         src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
-                </IonAvatar>
-                <IonCardTitle>
-                    {
-                        Positions
-                            .filter(p => p.value === suggestion.position.title)[0].visual
-                    }
-                </IonCardTitle>
-                <IonCardSubtitle>%{suggestion.matchRate} Uyumluluk</IonCardSubtitle>
-            </IonCardHeader>
+            <IonCardContent>
+                <PositionInCard position={suggestion.position}/>
+                <IonButton className="ion-no-margin ion-margin-top"
+                    onClick={() => setModalOpen(true)}
+                           expand="block">Detaylar</IonButton>
+            </IonCardContent>
 
-            <IonCardContent>{suggestion.position.description}</IonCardContent>
-            <IonButton onClick={() => {
-                setModalOpen(true)
-            }} expand="block">Detaylar</IonButton>
             <IonModal isOpen={modalOpen}>
                 <IonHeader>
                     <IonToolbar>

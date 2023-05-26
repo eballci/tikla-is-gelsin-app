@@ -1,17 +1,15 @@
 import {Offer, OfferSubmissionStatus} from "../../../../model";
 import {
-    IonAvatar,
     IonBadge,
     IonButton,
     IonButtons,
     IonCard,
     IonCardContent,
-    IonCardHeader,
-    IonCardTitle,
     IonContent,
     IonHeader,
     IonIcon,
-    IonModal, IonSpinner,
+    IonModal,
+    IonSpinner,
     IonText,
     IonTitle,
     IonToolbar,
@@ -24,6 +22,7 @@ import {acceptOffer, refuseOffer} from "../../../../service/offer.service";
 import {alertOutline, checkmarkOutline, closeOutline, trashOutline} from "ionicons/icons";
 import {fetchSeeker} from "../../../../store/store";
 import {Positions} from "../../../../data/presetData";
+import PositionInCard from "../../components/position-in-card/positionInCard";
 
 export default function OfferItem({offer}: { offer: Offer }) {
     const [modalOpen, setModalOpen] = useState(false);
@@ -116,28 +115,20 @@ export default function OfferItem({offer}: { offer: Offer }) {
     return (
         <IonCard
             style={{backgroundColor: offer.status === OfferSubmissionStatus.ISSUED ? "rgba(163, 255, 229, 0.5)" : ""}}>
-            <IonCardHeader>
-                <IonAvatar>
-                    <img alt="Silhouette of a person's head"
-                         src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
-                </IonAvatar>
-                <IonCardTitle>
-                    {
-                        Positions
-                            .filter(p => p.value === offer.position.title)[0].visual
-                    }
-                </IonCardTitle>
-            </IonCardHeader>
-            <IonCardContent>{offer.position.description}</IonCardContent>
-            {isAccepted && (
-                <IonBadge color="success">
-                    <IonIcon icon={checkmarkOutline}></IonIcon>
-                    Kabul Edildi
-                </IonBadge>
-            )}
-            <IonButton onClick={() => {
-                setModalOpen(true)
-            }} expand="block">Detaylar</IonButton>
+            <IonCardContent>
+                <PositionInCard position={offer.position}/>
+                {isAccepted && (
+                    <IonBadge color="success">
+                        <IonIcon icon={checkmarkOutline}></IonIcon>
+                        Kabul Edildi
+                    </IonBadge>
+                )}
+                <IonButton className="ion-no-margin ion-margin-top"
+                           onClick={() => {
+                               setModalOpen(true)
+                           }}
+                           expand="block">Detaylar</IonButton>
+            </IonCardContent>
             <IonModal isOpen={modalOpen}>
                 <IonHeader>
                     <IonToolbar>
