@@ -9,7 +9,6 @@ import {
     IonIcon,
     IonModal,
     IonSpinner,
-    IonText,
     IonTitle,
     IonToolbar,
     useIonToast
@@ -22,6 +21,7 @@ import {useAppDispatch} from "../../../../store/hooks";
 import {fetchSeeker} from "../../../../store/store";
 import {Positions} from "../../../../data/presetData";
 import PositionInCard from "../../components/position-in-card";
+import PositionInModal from "../../components/position-in-modal";
 
 export default function SuggestionItem({suggestion}: { suggestion: PositionSuggestion }) {
     const [modalOpen, setModalOpen] = useState(false);
@@ -96,7 +96,7 @@ export default function SuggestionItem({suggestion}: { suggestion: PositionSugge
             <IonCardContent>
                 <PositionInCard position={suggestion.position}/>
                 <IonButton className="ion-no-margin ion-margin-top"
-                    onClick={() => setModalOpen(true)}
+                           onClick={() => setModalOpen(true)}
                            expand="block">Detaylar</IonButton>
             </IonCardContent>
 
@@ -119,7 +119,7 @@ export default function SuggestionItem({suggestion}: { suggestion: PositionSugge
                     </IonToolbar>
                 </IonHeader>
                 <IonContent className="ion-padding">
-                    <IonText>{suggestion.position.description}</IonText>
+                    <PositionInModal position={suggestion.position}/>
                     <IonChip>%{suggestion.matchRate} Uyumluluk</IonChip>
                     {
                         (!isSubmitted && !isIgnored) && (

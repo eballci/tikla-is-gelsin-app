@@ -10,7 +10,6 @@ import {
     IonIcon,
     IonModal,
     IonSpinner,
-    IonText,
     IonTitle,
     IonToolbar,
     useIonAlert,
@@ -23,6 +22,7 @@ import {removeSubmission} from "../../../../service/submission.service";
 import {fetchSeeker} from "../../../../store/store";
 import {Positions} from "../../../../data/presetData";
 import PositionInCard from "../../components/position-in-card";
+import PositionInModal from "../../components/position-in-modal";
 
 export default function SubmissionItem({submission}: { submission: Submission }) {
     const [modalOpen, setModalOpen] = useState(false);
@@ -163,7 +163,7 @@ export default function SubmissionItem({submission}: { submission: Submission })
                     </IonToolbar>
                 </IonHeader>
                 <IonContent className="ion-padding">
-                    <IonText>{submission.position.description}</IonText>
+                    <PositionInModal position={submission.position}/>
                     {infoAndButton()}
                 </IonContent>
             </IonModal>

@@ -10,7 +10,6 @@ import {
     IonIcon,
     IonModal,
     IonSpinner,
-    IonText,
     IonTitle,
     IonToolbar,
     useIonAlert,
@@ -23,6 +22,7 @@ import {alertOutline, checkmarkOutline, closeOutline, trashOutline} from "ionico
 import {fetchSeeker} from "../../../../store/store";
 import {Positions} from "../../../../data/presetData";
 import PositionInCard from "../../components/position-in-card";
+import PositionInModal from "../../components/position-in-modal";
 
 export default function OfferItem({offer}: { offer: Offer }) {
     const [modalOpen, setModalOpen] = useState(false);
@@ -148,7 +148,7 @@ export default function OfferItem({offer}: { offer: Offer }) {
                     </IonToolbar>
                 </IonHeader>
                 <IonContent className="ion-padding">
-                    <IonText>{offer.position.description}</IonText>
+                    <PositionInModal position={offer.position}/>
                     {
                         (!isAccepted && !isRefused) && (
                             <>
