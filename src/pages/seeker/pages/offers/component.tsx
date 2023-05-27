@@ -15,13 +15,16 @@ import Error from "./error";
 import OfferList from "./offer-list";
 import {readAllOffers} from "../../../../service/offer.service";
 import {fetchSeeker} from "../../../../store/store";
+import {OfferSubmissionStatus} from "../../../../model";
 
 export default function Offers() {
     const dispatch = useAppDispatch();
     const seekerId = useAppSelector((state) => state.seeker.id);
     const isFetching = useAppSelector((state) => state.seeker.isFetching);
     const isFetchingFailed = useAppSelector((state) => state.seeker.isFetchingFailed);
-    const offerCount = useAppSelector((state) => state.seeker.me?.offers)?.length;
+    const offerCount = useAppSelector((state) => state.seeker.me?.offers)
+        ?.filter(offer => offer.status != OfferSubmissionStatus.REFUSED)
+        .length;
 
     const handleRefresh = (event: CustomEvent<RefresherEventDetail>) => {
         setTimeout(() => {
