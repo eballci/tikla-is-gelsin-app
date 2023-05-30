@@ -16,11 +16,13 @@ import {useAppDispatch, useAppSelector} from "../../../../store/hooks";
 import {alertOutline, checkmarkOutline} from "ionicons/icons";
 import {setEmployerId} from "../../../../store/store";
 import {loginEmployer} from "../../../../service/employer.service";
+import Register from "./register";
 
 export default function Login() {
     const dispatch = useAppDispatch();
     const employerId = useAppSelector((state) => state.employer.id);
     const [present] = useIonToast();
+    const [modalOpen, setModalOpen] = useState(false);
     const [isLogging, setIsLogging] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -114,9 +116,21 @@ export default function Login() {
                                 </IonButton>
                             </IonCol>
                         </IonRow>
+                        <IonRow className="ion-align-items-center">
+                            <IonCol>
+                                <IonButton
+                                    style={{width: 200}}
+                                    onClick={() => setModalOpen(true)}
+                                    disabled={isLogging}
+                                    color="dark">
+                                    Kurumu Kaydet
+                                </IonButton>
+                            </IonCol>
+                        </IonRow>
                     </IonGrid>
                 </IonContent>
             </IonModal>
+            <Register modalOpen={modalOpen} setModalOpen={setModalOpen}/>
         </>
     );
 }
