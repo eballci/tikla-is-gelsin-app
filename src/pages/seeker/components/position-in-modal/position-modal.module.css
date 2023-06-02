@@ -1,19 +1,19 @@
 .company-button {
-  --background: transparent;
-  --background-hover: transparent;
-  --background-activated: transparent;
-  --background-focused: transparent;
-  --color: #2b2b2b;
-  font-weight: 700;
+    --background: transparent;
+    --background-hover: transparent;
+    --background-activated: transparent;
+    --background-focused: transparent;
+    --color: #2b2b2b;
+    font-weight: 700;
 }
 
 .description {
-  color: #545454;
-  font-size: 15px;
-  margin-top: 1rem;
-  text-align: justify;
+    color: #545454;
+    font-size: 15px;
+    margin-top: 1rem;
+    text-align: justify;
 }
 
 .w-100 {
-  width: 100%;
+    width: 100%;
 }

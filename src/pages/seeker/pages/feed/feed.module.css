@@ -1,67 +1,67 @@
 .card {
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 3px 0px,
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.06) 0px 0px 0px 1px;
-  border-radius: 20px;
+    border-radius: 20px;
 }
 
 .card-content {
-  padding-bottom: 15px;
-  padding-top: 10px;
+    padding-bottom: 15px;
+    padding-top: 10px;
 }
 
 .details-button {
-  --background: #032261;
-  --background-hover: #011b4e;
-  --background-activated: #011b4e;
-  --background-focused: #011b4e;
-  --color: #fff;
-  --border-radius: 99px;
-  font-size: 16px;
-  width: 100%;
+    --background: #032261;
+    --background-hover: #011b4e;
+    --background-activated: #011b4e;
+    --background-focused: #011b4e;
+    --color: #fff;
+    --border-radius: 99px;
+    font-size: 16px;
+    width: 100%;
 }
 
 .ignore-button {
-  --background: transparent;
-  --background-hover: #d8e3f9;
-  --background-activated: #d8e3f9;
-  --background-focused: #d8e3f9;
-  --color: #032261;
-  --border-radius: 99px;
-  font-size: 16px;
-  width: 100%;
+    --background: transparent;
+    --background-hover: #d8e3f9;
+    --background-activated: #d8e3f9;
+    --background-focused: #d8e3f9;
+    --color: #032261;
+    --border-radius: 99px;
+    font-size: 16px;
+    width: 100%;
 }
 
 .badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 99px;
-  color: #032261;
-  font-size: 14px;
-  font-weight: 600;
-  margin-inline: 0.5rem;
-  margin-top: 0.5rem;
-  padding: 0.3rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 99px;
+    color: #032261;
+    font-size: 14px;
+    font-weight: 600;
+    margin-inline: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.3rem 1rem;
 }
 
 .compatibility-high {
-  background: rgb(205, 255, 216);
-  background: linear-gradient(
-    90deg,
-    rgba(205, 255, 216, 0.25) 2%,
-    rgba(148, 185, 255, 0.15) 35%
-  );
+    background: rgb(205, 255, 216);
+    background: linear-gradient(
+            90deg,
+            rgba(205, 255, 216, 0.25) 2%,
+            rgba(148, 185, 255, 0.15) 35%
+    );
 }
 
 .compatibility-low {
-  background: rgb(205, 255, 216);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 247, 173, 0.2) 2%,
-    rgba(255, 169, 249, 0.15) 35%
-  );
+    background: rgb(205, 255, 216);
+    background: linear-gradient(
+            90deg,
+            rgba(255, 247, 173, 0.2) 2%,
+            rgba(255, 169, 249, 0.15) 35%
+    );
 }
 
 .gap {
-  gap: 1rem;
+    gap: 1rem;
 }
