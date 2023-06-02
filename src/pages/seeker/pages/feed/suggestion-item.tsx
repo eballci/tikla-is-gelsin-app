@@ -106,16 +106,20 @@ export default function SuggestionItem({
                 <PositionInCard position={suggestion.position}/>
                 <IonRow className={styles.gap}>
                     <IonCol className='ion-no-padding'>
-                        <IonButton className={styles['ignore-button']} size='small'>
-                            Yok say
+                        <IonButton disabled={isIgnoring || isIgnored}
+                                   className={styles['ignore-button']}
+                                   size='small'
+                                   onClick={handleIgnore}>
+                            {!isIgnoring && !isIgnored && "Yok say"}
+                            {isIgnoring && !isIgnored && <IonSpinner/>}
+                            {isIgnored && "Kaldırıldı"}
                         </IonButton>
                     </IonCol>
                     <IonCol className='ion-no-padding'>
-                        <IonButton
-                            className={styles['details-button']}
-                            onClick={() => setModalOpen(true)}
-                            size='small'
-                        >
+                        <IonButton disabled={isIgnoring || isIgnored}
+                                   className={styles['details-button']}
+                                   onClick={() => setModalOpen(true)}
+                                   size='small'>
                             Detaylar
                         </IonButton>
                     </IonCol>
