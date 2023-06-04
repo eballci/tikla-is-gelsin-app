@@ -89,11 +89,15 @@ export default function CandidateList({suggestions}: { suggestions: Array<Seeker
                             <CandidateItem key={suggestion.seeker.id} suggestion={suggestion}/>
                         ))
                 }
-                <IonButton className="ion-no-margin ion-margin-top"
-                           expand="block"
-                           onClick={() => setModalOpen(true)}>
-                    +{suggestions.length - 2} aday daha
-                </IonButton>
+                {
+                    suggestions.length > 2 && (
+                        <IonButton className="ion-no-margin ion-margin-top"
+                                   expand="block"
+                                   onClick={() => setModalOpen(true)}>
+                            +{suggestions.length - 2} aday daha
+                        </IonButton>
+                    )
+                }
             </IonList>
             <IonModal isOpen={modalOpen}>
                 <TypeAhead suggestions={suggestions}
