@@ -15,7 +15,7 @@ import {
     IonTitle,
     IonToolbar,
 } from '@ionic/react';
-import {Position} from '../../../../model';
+import {Position} from '../../model';
 import React, {useState} from 'react';
 import {closeOutline, globeOutline, walkOutline} from 'ionicons/icons';
 import styles from './position-modal.module.css';

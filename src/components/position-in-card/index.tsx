@@ -1,6 +1,6 @@
-import {Position} from '../../../../model';
+import {Position} from '../../model';
 import {IonAvatar, IonCol, IonGrid, IonRow} from '@ionic/react';
-import {Positions} from '../../../../data/presetData';
+import {Positions} from '../../data/presetData';
 import React from 'react';
 import styles from './position-card.module.css';
 
