@@ -1,10 +1,19 @@
 import {Position} from '../../model';
-import {IonAvatar, IonCol, IonGrid, IonRow} from '@ionic/react';
+import {IonAvatar, IonButton, IonCol, IonGrid, IonIcon, IonRow} from '@ionic/react';
 import {Positions} from '../../data/presetData';
 import React from 'react';
 import styles from './position-card.module.css';
+import {ellipsisVerticalOutline} from "ionicons/icons";
 
-export default function PositionInCard({position}: { position: Position }) {
+export default function PositionInCard(
+    {
+        position,
+        optionsAction
+    }: {
+        position: Position,
+        optionsAction?: () => void
+    }
+) {
     return (
         <>
             <IonGrid>
@@ -32,6 +41,18 @@ export default function PositionInCard({position}: { position: Position }) {
                             {position.employer.name}
                         </IonRow>
                     </IonCol>
+                    {
+                        optionsAction && (
+                            <IonCol className="ion-align-items-center">
+                                <IonButton onClick={optionsAction}
+                                           fill="clear"
+                                           color="medium"
+                                           style={{float: "right"}}>
+                                    <IonIcon icon={ellipsisVerticalOutline}/>
+                                </IonButton>
+                            </IonCol>
+                        )
+                    }
                 </IonRow>
                 <IonRow className={styles['job-description']}>
                     {position.description.slice(0, 200)}
