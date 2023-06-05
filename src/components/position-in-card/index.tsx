@@ -44,10 +44,13 @@ export default function PositionInCard(
                     {
                         optionsAction && (
                             <IonCol className="ion-align-items-center">
-                                <IonButton onClick={optionsAction}
-                                           fill="clear"
+                                <IonButton fill="clear"
                                            color="medium"
-                                           style={{float: "right"}}>
+                                           style={{float: "right"}}
+                                           onClick={(e) => {
+                                               optionsAction();
+                                               e.stopPropagation();
+                                           }}>
                                     <IonIcon icon={ellipsisVerticalOutline}/>
                                 </IonButton>
                             </IonCol>
