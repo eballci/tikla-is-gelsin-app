@@ -1,11 +1,17 @@
 import {Position} from "../../../../model";
-import {IonActionSheet, IonAlert, IonCard, IonCardContent} from "@ionic/react";
+import {IonActionSheet, IonAlert, IonCard, IonCardContent, useIonToast} from "@ionic/react";
 import PositionInCard from "../../../../components/position-in-card";
 import React, {useState} from "react";
 import PositionDetail from "./position-detail";
 import PositionUpdate from "./position-update";
+import {useAppDispatch} from "../../../../store/hooks";
+import {removePosition} from "../../../../service/position.service";
+import {alertOutline, trashOutline} from "ionicons/icons";
+import {fetchEmployer} from "../../../../store/store";
 
 export default function PositionItem({position}: { position: Position }) {
+    const dispatch = useAppDispatch();
+    const [present] = useIonToast();
     const [actionOpen, setActionOpen] = useState(false);
     const [detailModal, setDetailModal] = useState(false);
     const [updateModal, setUpdateModal] = useState(false);
@@ -15,8 +21,25 @@ export default function PositionItem({position}: { position: Position }) {
         setActionOpen(true);
     };
 
-    const handleRemove = () => {
-
+    const handleRemove = async () => {
+        const data = await removePosition(position);
+        if (!data) {
+            await present({
+                message: 'Bağlantı sağlanamadı.',
+                duration: 3000,
+                position: 'bottom',
+                icon: alertOutline,
+                color: 'danger',
+            });
+            return;
+        }
+        await present({
+            message: 'İlan kaldırıldı.',
+            duration: 5000,
+            position: 'bottom',
+            icon: trashOutline,
+        });
+        setTimeout(() => dispatch(fetchEmployer()), 3500);
     };
 
     return (
