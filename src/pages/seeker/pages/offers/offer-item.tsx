@@ -21,8 +21,8 @@ import {acceptOffer, refuseOffer} from "../../../../service/offer.service";
 import {alertOutline, checkmarkOutline, closeOutline, trashOutline} from "ionicons/icons";
 import {fetchSeeker} from "../../../../store/store";
 import {Positions} from "../../../../data/presetData";
-import PositionInCard from "../../components/position-in-card";
-import PositionInModal from "../../components/position-in-modal";
+import PositionInCard from "../../../../components/position-in-card";
+import PositionInModal from "../../../../components/position-in-modal";
 
 export default function OfferItem({offer}: { offer: Offer }) {
     const [modalOpen, setModalOpen] = useState(false);

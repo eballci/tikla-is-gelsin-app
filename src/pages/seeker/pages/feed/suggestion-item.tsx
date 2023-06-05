@@ -21,8 +21,8 @@ import {ignoreSuggestion, submitSuggestion,} from '../../../../service/suggestio
 import {useAppDispatch} from '../../../../store/hooks';
 import {fetchSeeker} from '../../../../store/store';
 import {Positions} from '../../../../data/presetData';
-import PositionInCard from '../../components/position-in-card';
-import PositionInModal from '../../components/position-in-modal';
+import PositionInCard from '../../../../components/position-in-card';
+import PositionInModal from '../../../../components/position-in-modal';
 import styles from './feed.module.css';
 
 export default function SuggestionItem({
