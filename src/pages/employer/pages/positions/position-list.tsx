@@ -1,5 +1,5 @@
 import {useAppSelector} from "../../../../store/hooks";
-import {Positions} from "../../../../data/presetData";
+import PositionItem from "./position-item";
 
 export default function PositionList() {
     const positions = useAppSelector((state) => state.employer.me?.openPositions);
@@ -8,7 +8,7 @@ export default function PositionList() {
         <>
             {
                 positions?.map(position => (
-                    <li>{Positions.filter((p) => p.value === position.title)[0].visual}</li>
+                    <PositionItem position={position}/>
                 ))
             }
         </>
