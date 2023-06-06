@@ -5,6 +5,7 @@ import {
     IonContent,
     IonHeader,
     IonIcon,
+    IonInput,
     IonItem,
     IonItemDivider,
     IonItemGroup,
@@ -23,7 +24,13 @@ import {useAppDispatch} from "../../../../store/hooks";
 import React, {useState} from "react";
 import {updatePosition} from "../../../../service/position.service";
 import {fetchEmployer} from "../../../../store/store";
-import {LanguageLevelTranslation, Languages, Positions} from "../../../../data/presetData";
+import {
+    EducationLevelTranslation,
+    LanguageLevelTranslation,
+    Languages,
+    Positions,
+    Studies
+} from "../../../../data/presetData";
 
 export default function PositionUpdate(
     {
@@ -320,6 +327,252 @@ export default function PositionUpdate(
                                                newLanguageCriteria.expectedLanguage === ""
                                                ||
                                                newLanguageCriteria.expectedLevel === 0
+                                           }>
+                                    <IonIcon icon={createOutline}/>
+                                </IonButton>
+                            </IonButtons>
+                        </IonItem>
+                    </IonItemGroup>
+                    <IonItemGroup>
+                        <IonItemDivider>
+                            Eğitim Kriterleri
+                        </IonItemDivider>
+                        {
+                            educationCriteriaList.map((educationCriteria, index) => (
+                                <IonItem>
+                                    <IonSelect
+                                        disabled={isUpdating}
+                                        label="Alan"
+                                        labelPlacement="stacked"
+                                        placeholder="Seçiniz..."
+                                        value={educationCriteria.study}
+                                        onIonChange={(ev) => setEducationCriteriaList([
+                                            ...educationCriteriaList.map((ec, i) => {
+                                                if (i === index) {
+                                                    return {
+                                                        ...ec,
+                                                        study: ev.detail.value
+                                                    };
+                                                }
+                                                return ec;
+                                            })
+                                        ])}
+                                    >
+                                        {
+                                            Studies.map((study) => (
+                                                <IonSelectOption
+                                                    value={study.value}>{study.visual}</IonSelectOption>
+                                            ))
+                                        }
+                                    </IonSelect>
+                                    <IonSelect
+                                        disabled={isUpdating}
+                                        className="ion-margin-start ion-margin-end"
+                                        label="Tür"
+                                        labelPlacement="stacked"
+                                        value={educationCriteria.minEducationLevel}
+                                        placeholder="Seçiniz..."
+                                        onIonChange={(ev) => setEducationCriteriaList([
+                                            ...educationCriteriaList.map((ec, i) => {
+                                                if (i === index) {
+                                                    return {
+                                                        ...ec,
+                                                        minEducationLevel: ev.detail.value
+                                                    };
+                                                }
+                                                return ec;
+                                            })
+                                        ])}>
+                                        {
+                                            EducationLevelTranslation
+                                                .map(t => (
+                                                    <IonSelectOption
+                                                        value={t.value}>{t.visual}</IonSelectOption>
+                                                ))
+                                        }
+                                    </IonSelect>
+                                    <IonButtons slot="end">
+                                        <IonButton disabled={isUpdating}
+                                                   onClick={() => {
+                                                       setEducationCriteriaList([
+                                                           ...educationCriteriaList
+                                                               .filter((v, i) => (
+                                                                   i !== index
+                                                               ))
+                                                       ])
+                                                   }}>
+                                            <IonIcon color="danger" icon={trashOutline}/>
+                                        </IonButton>
+                                    </IonButtons>
+                                </IonItem>
+                            ))
+                        }
+                        <IonItem>
+                            <IonSelect
+                                disabled={isUpdating}
+                                label="Alan"
+                                labelPlacement="stacked"
+                                placeholder="Seçiniz..."
+                                value={newEducationCriteria.study}
+                                onIonChange={(ev) => setNewEducationCriteria({
+                                    ...newEducationCriteria,
+                                    study: ev.detail.value
+                                })}
+                            >
+                                {
+                                    Studies.map((study) => (
+                                        <IonSelectOption
+                                            value={study.value}>{study.visual}</IonSelectOption>
+                                    ))
+                                }
+                            </IonSelect>
+                            <IonSelect
+                                disabled={isUpdating}
+                                className="ion-margin-start ion-margin-end"
+                                label="Tür"
+                                labelPlacement="stacked"
+                                value={newEducationCriteria.minEducationLevel}
+                                placeholder="Seçiniz..."
+                                onIonChange={(ev) => setNewEducationCriteria({
+                                    ...newEducationCriteria,
+                                    minEducationLevel: ev.detail.value
+                                })}>
+                                {
+                                    EducationLevelTranslation
+                                        .map(t => (
+                                            <IonSelectOption
+                                                value={t.value}>{t.visual}</IonSelectOption>
+                                        ))
+                                }
+                            </IonSelect>
+                            <IonButtons slot="end">
+                                <IonButton onClick={addNewEducationCriteria}
+                                           disabled={
+                                               isUpdating
+                                               ||
+                                               newEducationCriteria.study === ""
+                                               ||
+                                               newEducationCriteria.minEducationLevel === 0
+                                           }>
+                                    <IonIcon icon={createOutline}/>
+                                </IonButton>
+                            </IonButtons>
+                        </IonItem>
+                    </IonItemGroup>
+                    <IonItemGroup>
+                        <IonItemDivider>
+                            Tecrübe Kriterleri
+                        </IonItemDivider>
+                        {
+                            experienceCriteriaList.map((experienceCriteria, index) => (
+                                <IonItem>
+                                    <IonSelect
+                                        disabled={isUpdating}
+                                        label="Pozisyon"
+                                        labelPlacement="stacked"
+                                        placeholder="Seçiniz..."
+                                        value={experienceCriteria.title}
+                                        onIonChange={(ev) => setExperienceCriteriaList([
+                                            ...experienceCriteriaList.map((ec, i) => {
+                                                if (i === index) {
+                                                    return {
+                                                        ...ec,
+                                                        title: ev.detail.value
+                                                    };
+                                                }
+                                                return ec;
+                                            })
+                                        ])}>
+                                        {
+                                            Positions
+                                                .map(position => (
+                                                    <IonSelectOption
+                                                        value={position.value}>
+                                                        {position.visual}
+                                                    </IonSelectOption>
+                                                ))
+                                        }
+                                    </IonSelect>
+                                    <IonInput
+                                        disabled={isUpdating}
+                                        className="ion-margin-start ion-margin-end"
+                                        label="Beklenen yıl"
+                                        labelPlacement="stacked"
+                                        placeholder="En az 1 girebilirsiniz"
+                                        value={
+                                            experienceCriteria.minimumYears === 0
+                                                ? "" : experienceCriteria.minimumYears
+                                        }
+                                        type="number"
+                                        onIonInput={(ev) => setExperienceCriteriaList([
+                                            ...experienceCriteriaList.map((ec, i) => {
+                                                if (i === index) {
+                                                    return {
+                                                        ...ec,
+                                                        minimumYears: parseInt(ev.detail.value ?? "0")
+                                                    };
+                                                }
+                                                return ec;
+                                            })
+                                        ])}/>
+                                    <IonButtons slot="end">
+                                        <IonButton
+                                            disabled={isUpdating || experienceCriteria.minimumYears === 0}
+                                            onClick={() => setExperienceCriteriaList([
+                                                ...experienceCriteriaList.filter((v, i) => (
+                                                    i !== index
+                                                ))
+                                            ])}>
+                                            <IonIcon color="danger" icon={trashOutline}/>
+                                        </IonButton>
+                                    </IonButtons>
+                                </IonItem>
+                            ))
+                        }
+                        <IonItem>
+                            <IonSelect
+                                disabled={isUpdating}
+                                label="Pozisyon"
+                                labelPlacement="stacked"
+                                placeholder="Seçiniz..."
+                                value={newExperienceCriteria.title}
+                                onIonChange={(ev) => setNewExperienceCriteria({
+                                    ...newExperienceCriteria,
+                                    title: ev.detail.value as string
+                                })}>
+                                {
+                                    Positions
+                                        .map(position => (
+                                            <IonSelectOption
+                                                value={position.value}>
+                                                {position.visual}
+                                            </IonSelectOption>
+                                        ))
+                                }
+                            </IonSelect>
+                            <IonInput
+                                disabled={isUpdating}
+                                className="ion-margin-start ion-margin-end"
+                                label="Beklenen yıl"
+                                labelPlacement="stacked"
+                                placeholder="En az 1 girebilirsiniz"
+                                value={
+                                    newExperienceCriteria.minimumYears === 0
+                                        ? "" : newExperienceCriteria.minimumYears
+                                }
+                                type="number"
+                                onIonInput={(ev) => setNewExperienceCriteria({
+                                    ...newExperienceCriteria,
+                                    minimumYears: parseInt(ev.detail.value ?? "0")
+                                })}/>
+                            <IonButtons slot="end">
+                                <IonButton onClick={addNewExperienceCriteria}
+                                           disabled={
+                                               isUpdating
+                                               ||
+                                               newExperienceCriteria.title === ""
+                                               ||
+                                               newExperienceCriteria.minimumYears === 0
                                            }>
                                     <IonIcon icon={createOutline}/>
                                 </IonButton>
