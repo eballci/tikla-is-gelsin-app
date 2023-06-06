@@ -40,7 +40,7 @@ export const EducationLevelTranslation: Array<{ visual: string, value: Education
 
 export const Languages: Array<{ visual: string, value: string }> = [
     {
-        visual: "İnigilizce",
+        visual: "İngilizce",
         value: "english"
     },
     {
