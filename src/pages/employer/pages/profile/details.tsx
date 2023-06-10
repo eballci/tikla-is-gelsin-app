@@ -3,9 +3,19 @@ import {
     IonAvatar,
     IonButton,
     IonButtons,
+    IonContent,
+    IonHeader,
     IonIcon,
+    IonInput,
     IonItem,
-    IonItemGroup, IonTitle,
+    IonItemGroup,
+    IonList,
+    IonModal,
+    IonSpinner,
+    IonText,
+    IonTextarea,
+    IonTitle,
+    IonToolbar,
     useIonActionSheet,
     useIonAlert,
     useIonToast
@@ -13,7 +23,15 @@ import {
 import React, {useState} from "react";
 import {Camera, CameraResultType} from "@capacitor/camera";
 import {updateAvatar, updateEmployer} from "../../../../service/employer.service";
-import {alertOutline, checkmarkOutline, createOutline, settingsOutline} from "ionicons/icons";
+import {
+    alertOutline,
+    checkmarkOutline,
+    closeOutline,
+    createOutline,
+    earthOutline,
+    peopleOutline,
+    settingsOutline
+} from "ionicons/icons";
 import {fetchEmployer} from "../../../../store/store";
 import {Employer} from "../../../../model";
 
@@ -178,9 +196,7 @@ export default function Details() {
                     style={{paddingTop: 20}}
                     lines="none"
                     className="ion-no-padding">
-                    <IonTitle size="large">
-                        {employer?.name}
-                    </IonTitle>
+                    <h2>{employer?.name}</h2>
                     <IonButtons slot="end">
                         <IonButton
                             onClick={() => setModalOpen(true)}
@@ -191,7 +207,106 @@ export default function Details() {
                         </IonButton>
                     </IonButtons>
                 </IonItem>
+                <IonItem lines="none"
+                         className="ion-no-padding">
+                    <IonIcon icon={peopleOutline}></IonIcon>
+                    <IonText className="ion-margin-start">
+                        {employer?.scale}
+                    </IonText>
+                </IonItem>
+                <IonItem
+                    className="ion-no-padding">
+                    <IonIcon icon={earthOutline}></IonIcon>
+                    <IonText className="ion-margin-start">
+                        {employer?.webSite ?? "-"}
+                    </IonText>
+                </IonItem>
+                <IonItem lines="none"
+                         className="ion-no-padding ion-padding-top">
+                    <IonText color="dark">
+                        {employer?.description}
+                    </IonText>
+                </IonItem>
             </IonItemGroup>
+            <IonModal isOpen={modalOpen}>
+                <IonHeader>
+                    <IonToolbar>
+                        <IonButtons slot="start">
+                            <IonButton disabled={isUpdating}
+                                       onClick={() => setModalOpen(false)}>
+                                <IonIcon icon={closeOutline}/>
+                            </IonButton>
+                        </IonButtons>
+                        <IonTitle>
+                            Firma Profili Güncelle
+                        </IonTitle>
+                        <IonButtons slot="end">
+                            <IonButton disabled={isUpdating}
+                                       onClick={handleUpdate}>
+                                {
+                                    isUpdating ?
+                                        <IonSpinner/> :
+                                        <IonIcon icon={checkmarkOutline}></IonIcon>
+                                }
+                            </IonButton>
+                        </IonButtons>
+                    </IonToolbar>
+                </IonHeader>
+                <IonContent>
+                    <IonList className="ion-padding-top">
+                        <IonItem>
+                            <IonInput
+                                disabled={isUpdating}
+                                label="Ad"
+                                labelPlacement="stacked"
+                                value={copy.name}
+                                onIonInput={(ev) => setCopy({
+                                    ...copy,
+                                    name: ev.detail.value as string
+                                })}
+                            />
+                        </IonItem>
+                        <IonItem>
+                            <IonInput
+                                disabled={isUpdating}
+                                label="Çalışan Sayısı"
+                                labelPlacement="stacked"
+                                value={copy.scale}
+                                type="number"
+                                onIonInput={(ev) => setCopy({
+                                    ...copy,
+                                    scale: parseInt(ev.detail.value ?? "0")
+                                })}
+                            />
+                        </IonItem>
+                        <IonItem>
+                            <IonInput
+                                disabled={isUpdating}
+                                label="Web Sitesi"
+                                labelPlacement="stacked"
+                                value={copy.webSite}
+                                type="url"
+                                onIonInput={(ev) => setCopy({
+                                    ...copy,
+                                    webSite: ev.detail.value as string
+                                })}
+                            />
+                        </IonItem>
+                        <IonItem>
+                            <IonTextarea
+                                disabled={isUpdating}
+                                label="Hakkında"
+                                labelPlacement="stacked"
+                                value={copy.description}
+                                onIonInput={(ev) => setCopy({
+                                    ...copy,
+                                    description: ev.detail.value as string
+                                })}
+                                autoGrow={true}></IonTextarea>
+                        </IonItem>
+                    </IonList>
+                </IonContent>
+            </IonModal>
         </>
     );
 }
