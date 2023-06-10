@@ -1,0 +1,21 @@
+.badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 99px;
+    color: #032261;
+    font-size: 14px;
+    font-weight: 600;
+    margin-inline: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.3rem 1rem;
+}
+
+.compatibility-high {
+    background: rgb(205, 255, 216);
+    background: linear-gradient(
+            90deg,
+            rgba(205, 255, 216, 0.25) 2%,
+            rgba(148, 185, 255, 0.15) 35%
+    );
+}
